@@ -1,0 +1,90 @@
+
+
+
+@extends('layouts.admin')
+@section('content')
+
+
+<div class="row">
+    <div class="col-12 col-lg-3 col-xxl-3 d-flex">
+        <div class="card illustration flex-fill">
+            <div class="card-body p-0 d-flex flex-fill">
+                <div class="row g-0 w-100">
+                    <div class="col-6">
+                        <div class="illustration-text p-3 m-1">
+                            <h4 class="illustration-text">Welcome Back, Chris!</h4>
+                            <p class="mb-0">AppStack Dashboard</p>
+                        </div>
+                    </div>
+                    <div class="col-6 align-self-end text-end">
+                        <img src="{{asset('contents/admin')}}/img/illustrations/customer-support.png" alt="Customer Support" class="img-fluid illustration-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-3 col-xxl-3 d-flex">
+        <div class="card flex-fill">
+            <div class="card-body py-4">
+                <div class="d-flex align-items-start">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-2">$ 24.300</h3>
+                        <p class="mb-2">Total Earnings</p>
+                        <div class="mb-0">
+                            <span class="badge badge-soft-success me-2"> +5.35% </span>
+                            <span class="text-muted">Since last week</span>
+                        </div>
+                    </div>
+                    <div class="d-inline-block ms-3">
+                        <div class="stat">
+                            <i class="align-middle text-success" data-feather="dollar-sign"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-3 col-xxl-3 d-flex">
+        <div class="card flex-fill">
+            <div class="card-body py-4">
+                <div class="d-flex align-items-start">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-2">43</h3>
+                        <p class="mb-2">Pending Orders</p>
+                        <div class="mb-0">
+                            <span class="badge badge-soft-danger me-2"> -4.25% </span>
+                            <span class="text-muted">Since last week</span>
+                        </div>
+                    </div>
+                    <div class="d-inline-block ms-3">
+                        <div class="stat">
+                            <i class="align-middle text-danger" data-feather="shopping-bag"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-3 col-xxl-3 d-flex">
+        <div class="card flex-fill">
+            <div class="card-body py-4">
+                <div class="d-flex align-items-start">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-2">$ 18.700</h3>
+                        <p class="mb-2">Total Revenue</p>
+                        <div class="mb-0">
+                            <span class="badge badge-soft-success me-2"> +8.65% </span>
+                            <span class="text-muted">Since last week</span>
+                        </div>
+                    </div>
+                    <div class="d-inline-block ms-3">
+                        <div class="stat">
+                            <i class="align-middle text-info" data-feather="dollar-sign"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
