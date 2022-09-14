@@ -37,7 +37,7 @@
 							<td>{{ $data['role'] }}</td>
 
 							<td class="table-action">
-                                 <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
+                                 <a href="{{ route('user.edit', $data->slug) }}"><i class="align-middle" data-feather="edit-2"></i></a>
                                  <a href="{{ route('user.show', $data->slug) }}"><i class="align-middle" data-feather="eye"></i></a>
                                   <a href="#"><i class="align-middle" data-feather="trash"></i></a>
                             </td>

@@ -60,7 +60,7 @@ class UserController extends Controller
        if($request->hasfile('photo')){
           $image = $request->file('photo');
           $user_img = 'user' . time() . rand(100000,100000) . '.' . $image->getClientOriginalExtension();
-          Image::make($image)->resize(100,100)->save('Uploads/user/image/' . $user_img);
+          Image::make($image)->resize(100,100)->save('uploads/user/image/' . $user_img);
        }else{
         $user_img = '';
        }
@@ -107,9 +107,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($slug){
+      $edit_user = User::where('status',1)->where('slug',$slug)->firstOrFail();
+      return view('admin.user.edit',compact('edit_user'));
+
     }
 
     /**
@@ -119,9 +120,52 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $slug){
+
+      $this->validate($request,[
+
+        'name' => ['required'],
+        'phone' => ['required'],
+        'role' => ['required'],
+
+      ],[
+
+        'name.required' => 'Please edit your name',
+        'phone.required' => 'Please edit your phone',
+        'role.required' => 'Please edit your role',
+
+      ]);
+
+      if($request->hasfile('photo')){
+        $image = $request->file('photo');
+        $user_image = 'user_edit' . time() . rand(100000,100000) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(50,50)->save('Uploads/user/image/' . $user_image);
+
+      }else{
+        $user_image = '';
+      }
+
+      $update = User::where('slug',$slug)->where('status', 1)->update([
+         'name' => $request['name'],
+         'phone' => $request['phone'],
+         'email' => $request['email'],
+         'role' => $request['role'],
+         'photo' => $user_image,
+         'slug' => Str::slug($request->name, '-'),
+         'status' => 1,
+        'updated_at' => Carbon::now()->toDateTimestring(),
+
+      ]);
+
+      if($update){
+        Session::flash('sucess', 'Successfully Update');
+        return redirect()->back();
+      }else{
+        Session::flash('error', 'update failed');
+        return redirect()->back();
+      }
+
+
     }
 
     /**
