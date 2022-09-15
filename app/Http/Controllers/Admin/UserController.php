@@ -158,7 +158,7 @@ class UserController extends Controller
       ]);
 
       if($update){
-        Session::flash('sucess', 'Successfully Update');
+        Session::flash('success', 'Successfully Update');
         return redirect()->back();
       }else{
         Session::flash('error', 'update failed');
@@ -168,6 +168,20 @@ class UserController extends Controller
 
     }
 
+     public function softdelete($slug){
+       $softdel = User::where('status',1)->where('slug',$slug)->update([
+         'status' => 0,
+         'updated_at' => Carbon::now()->toDateTimestring(),
+       ]);
+
+         if($softdel){
+            Session::flash('success', 'Successfully delete');
+             return redirect()->back();
+       }else{
+             Session::flash('error', 'delete Failed');
+             return  redirect()->back();
+       }
+    }
     /**
      * Remove the specified resource from storage.
      *
