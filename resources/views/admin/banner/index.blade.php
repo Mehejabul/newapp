@@ -4,47 +4,57 @@
 	<div class="col-12">
 		<div class="card border border-secondary">
 			<div class="card-header bg-transparent border-secondary d-flex justify-content-between ">
-				<h5 class="card-title">All Users</h5>
-                 <a href="{{ route('user.create') }}" class="btn btn-secondary">
-                    <i class="fa fa-plus-circle me-2" aria-hidden="true"></i>Create User
+				<h5 class="card-title">All Bannrs</h5>
+                 <a href="{{ route('banner.create') }}" class="btn btn-secondary">
+                    <i class="fa fa-plus-circle me-2" aria-hidden="true"></i>Create Banner
                  </a>
              </div>
 			<div class="card-body">
 				<table class="table table-bordered dt-responsive nowrap w-100">
 					<thead class="text-center">
 						<tr>
-							<th> Name </th>
-							<th> Phone </th>
-							<th> Email </th>
-							<th> Photo </th>
-							<th> Role </th>
+							<th> Image </th>
+							<th> Title </th>
+							<th> Middle Tite </th>
+							<th> Sub Title </th>
+							<th> Banner Button </th>
+							<th> Status </th>
 							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody class="text-center">
-                        @foreach ($all_user as $data )
+                        @foreach ($benners as $benner )
+
                             <tr>
-							<td>{{ $data['name'] }}</td>
-							<td>{{ $data['phone'] }}</td>
-							<td>{{ $data['email']}}</td>
 							<td>
-                                @if ($data->photo)
-                                <img src="{{ asset('uploads/user/image/'. $data->photo) }}" alt="photo" width="50px">
-                                @else
-                                <img src="{{ asset('uploads/avatar.png') }}" alt="avatar" width="50">
+                                @if($benner->banner_image)
+                                <img src="{{ asset('uploads/banner/'. $benner->banner_image) }}" alt="banner image" width="50px ">
+                                 @else
+                                 <img src="{{ asset('uploads/avatar.png') }}" alt="no_image" width="50px">
                                 @endif
                             </td>
-							<td>{{ $data['role'] }}</td>
+							<td>{{ $benner -> banner_title }}</td>
+							<td>{{ $benner -> banner_mid_title }}</td>
+							<td>{{ $benner -> banner_Sub_title }}</td>
+							<td>{{ $benner ->  banner_button  }}</td>
+                            <td>
+                                @if($benner->banner_status == 1)
+                                <div class="badge badge-soft-success font-size-12">Active</div>
+                                @else
+                                <div class="badge badge-soft-danger font-size-12">Disable</div>
+                                @endif
+                            </td>
 
 							<td class="table-action">
-                                 <a href="{{ route('user.edit', $data->slug) }}" type="button"><i class="align-middle" data-feather="edit-2"></i></a>
-                                 <a href="{{ route('user.show', $data->slug) }}"><i class="align-middle" data-feather="eye"></i></a>
-                                 <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $data->id }}">
+                                 <a href="{{ route('banner.edit', $benner->banner_slug) }}"><i class="align-middle" data-feather="edit-2"></i></a>
+                                 <a href="#"><i class="align-middle" data-feather="eye"></i></a>
+                                 <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary">
                                         <i class="align-middle" data-feather="trash"></i>
                                  </a>
                             </td>
-                                {{--   Modal start  --}}
-                                  <div class="modal fade" id="defaultModalPrimary{{ $data->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+						</tr>
+                              {{--   Modal start  --}}
+                                  <div class="modal fade" id="defaultModalPrimary" tabindex="-1" role="dialog" aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -55,13 +65,13 @@
 													<p class="mb-0"> Are you want to delete this item??</p>
 												</div>
 												<div class="modal-footer">
-													<a href="{{ route('user.softdelete', $data->slug) }}" type="button" class="btn btn-danger">Yes</a>
+													<a href="#" type="button" class="btn btn-danger">Yes</a>
                                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
 												</div>
 											</div>
 										</div>
 									</div>
-						      </tr>
+
                         @endforeach
 					</tbody>
 				</table>
@@ -76,4 +86,5 @@
 		</div>
 	</div>
 </div>
+
  @endsection

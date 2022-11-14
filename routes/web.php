@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +41,18 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::put('/user/{slug}',[UserController::class,'update'])->name('user.update');
     Route::get('/user/softdelete/{slug}',[UserController::class,'softdelete'])->name('user.softdelete');
     Route::delete('/user/{slug}',[UserController::class,'delete'])->name('user.delete');
+
+//Banner route
+    Route::get('/banner',[BannerController::class,'index'])->name('banner.index');
+    Route::get('/banner/create',[BannerController::class,'create'])->name('banner.create');
+    Route::post('/banner',[BannerController::class,'store'])->name('banner.store');
+    Route::get('/banner/show/{slug}',[BannerController::class,'show'])->name('banner.show');
+    Route::get('/banner/edit/{slug}',[BannerController::class,'edit'])->name('banner.edit');
+    Route::put('/banner/{slug}',[BannerController::class,'update'])->name('banner.update');
+    Route::get('/banner/softdelete/{slug}',[BannerController::class,'softdelete'])->name('banner.softdelete');
+    Route::delete('/banner/{slug}',[BannerController::class,'destroy'])->name('banner.delete');
+
+
 
 
 

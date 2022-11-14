@@ -15,6 +15,18 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('user.create') }}">Create user</a></li>
 						</ul>
 					</li>
+
+                     <li class="sidebar-item">
+                        <a data-bs-target="#pagess" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                          <i class="align-middle" data-feather="user"> </i>
+                          <span class="align-middle">Banner</span>
+                        </a>
+						<ul id="pagess" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('banner.index') }}">All Banner</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('banner.create') }}">Create Banner</a></li>
+						</ul>
+					</li>
+
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="tables-bootstrap.html"> <i class="align-middle" data-feather="list"></i> <span class="align-middle">Tables</span> </a>
 					</li>
