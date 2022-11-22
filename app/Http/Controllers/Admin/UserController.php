@@ -188,8 +188,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function restore($slug){
+      $restore = User::where('status',0)->where('slug',$slug)->update([
+       'status' => 1,
+       'updated_at' => Carbon::now()->toDatetimestring(),
+      ]);
+      if($restore){
+        Session::flash('success','Sucessfully restore');
+        return redirect()->back();
+      }else{
+        Session::flash('error','restore Failed');
+        return redirect()->back();
+      }
+    }
+    public function destroy($slug){
+    //   $pardel = User::findOrFail($slug);
+    //    $pardel->delete();
     }
 }

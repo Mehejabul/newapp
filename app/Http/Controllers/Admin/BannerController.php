@@ -59,7 +59,7 @@ class BannerController extends Controller
         'banner_order' => 'Please insert banner order',
       ]);
 
-      if($request->hasfile('banner_image')){
+      if($request->hasFile('banner_image')){
         $image = $request->file('banner_image');
         $ban_image = "banner" . time() . rand(100000,1000000) . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(250,250)->save('uploads/banner/' .$ban_image);
@@ -122,9 +122,73 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $this->validate($request,[
+            'banner_title' => 'required',
+            'banner_mid_title' => 'required',
+            'banner_Sub_title' => 'required',
+            'banner_order' => 'required',
+
+        ]);
+
+        $banner = Banner::where('banner_status',1)->where('banner_slug', $slug)->firstorFail();
+
+          if($request->hasFile('banner_image')) {
+
+               if(File::exists('uploads/banner/' .$banner->banner_image)) {
+               File::delete('uploads/banner/' .$banner->banner_image);
+
+
+            $image = $request->file('banner_image');
+             $ban_image = "banner" . time() . rand(100000,1000000) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(250,250)->save('uploads/banner/' .$ban_image);
+
+         } else{
+
+         $ban_image = $banner->banner_image;
+
+         }
+
+        $update = Banner::where('banner_status',1)->where('banner_slug',$slug)->update([
+        'banner_title' => $request['banner_title'],
+        'banner_mid_title' => $request['banner_mid_title'],
+        'banner_Sub_title' => $request['banner_Sub_title'],
+        'banner_button' => $request['banner_button'],
+        'banner_url' => $request['banner_url'],
+        'banner_order' => $request['banner_order'],
+        'banner_image' => $ban_image,
+        'banner_publish' => Auth::id(),
+        'banner_editor' => Auth::id(),
+        'banner_slug' => Str::slug($request->banner_title, '-'),
+        'banner_status' => 1,
+        'updated_at' => Carbon::now()->toDateTimestring(),
+        ]);
+
+        if($update){
+            Session::flash('success', 'Successfuly update banner');
+            return redirect()->back();
+        }else{
+            Session::flash('error', "Upadate failed");
+            return redirect()->back();
+        }
+
+          }
+    }
+
+      public function softdelete($slug){
+      $softdel = Banner::where('banner_status',1)->where('banner_slug',$slug)->update([
+            'banner_status' => 0,
+             'updated_at' =>Carbon::now()->toDateTimestring(),
+      ]);
+
+      if($softdel){
+        Session::flash('success', 'successfully delete');
+        return redirect()->back();
+      }else{
+        Session::flash('error', "delete failed");
+        return redirect()->back();
+      }
     }
 
     /**

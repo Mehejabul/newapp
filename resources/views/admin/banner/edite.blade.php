@@ -4,7 +4,7 @@
     <div class="col-12">
       <div class="card border border-secondary">
         <div class="card-header bg-transparent border-secondary d-flex justify-content-between ">
-          <h5 class="card-title">Create Benner</h5>
+          <h5 class="card-title">Edite  Benner</h5>
           <a href="{{ route('banner.index') }}" class="btn btn-secondary">
             <i class="fa fa-list-circle me-2" aria-hidden="true"></i>All Benner </a>
         </div>
@@ -31,8 +31,9 @@
             });
           </script>
         @endif
-    <form method="POST" action="{{ route('banner.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('banner.update',$datas->banner_slug) }}" enctype="multipart/form-data">
         @csrf
+        @method('put')
         <div class="row">
             <div class="col-lg-6 my-2">
               <div class="form-group" {{$errors->has('banner_title') ? ' has-error':''}}>

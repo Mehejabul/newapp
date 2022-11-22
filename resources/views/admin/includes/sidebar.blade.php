@@ -18,7 +18,7 @@
 
                      <li class="sidebar-item">
                         <a data-bs-target="#pagess" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                          <i class="align-middle" data-feather="user"> </i>
+                          <i class="align-middle" data-feather="airplay"> </i>
                           <span class="align-middle">Banner</span>
                         </a>
 						<ul id="pagess" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
@@ -27,8 +27,21 @@
 						</ul>
 					</li>
 
+                     <li class="sidebar-item">
+                        <a data-bs-target="#pagesss" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                          <i class="align-middle" data-feather="settings"> </i>
+                          <span class="align-middle">Manage</span>
+                        </a>
+						<ul id="pagesss" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('manage.basic.index') }}">Basic Setting</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('social.media.index') }}">Social Media</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="">Social Information</a></li>
+
+						</ul>
+					</li>
+
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="tables-bootstrap.html"> <i class="align-middle" data-feather="list"></i> <span class="align-middle">Tables</span> </a>
+						<a class="sidebar-link" href="{{ route('recycle.index') }}"> <i class="align-middle" data-feather="trash"></i> <span class="align-middle">RecycleBin</span> </a>
 					</li>
 				</ul>
 			</div>

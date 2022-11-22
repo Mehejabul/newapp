@@ -48,13 +48,13 @@
 							<td class="table-action">
                                  <a href="{{ route('banner.edit', $benner->banner_slug) }}"><i class="align-middle" data-feather="edit-2"></i></a>
                                  <a href="#"><i class="align-middle" data-feather="eye"></i></a>
-                                 <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary">
+                                 <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $benner->banner_slug }}">
                                         <i class="align-middle" data-feather="trash"></i>
                                  </a>
                             </td>
 						</tr>
                               {{--   Modal start  --}}
-                                  <div class="modal fade" id="defaultModalPrimary" tabindex="-1" role="dialog" aria-hidden="true">
+                                  <div class="modal fade" id="defaultModalPrimary{{ $benner->banner_slug }}" tabindex="-1" role="dialog" aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -65,7 +65,7 @@
 													<p class="mb-0"> Are you want to delete this item??</p>
 												</div>
 												<div class="modal-footer">
-													<a href="#" type="button" class="btn btn-danger">Yes</a>
+													<a href="{{ route('banner.softdelete', $benner->banner_slug) }}" type="button" class="btn btn-danger">Yes</a>
                                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
 												</div>
 											</div>

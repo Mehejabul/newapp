@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\RecycleController;
+use App\Http\Controllers\Admin\ManageController;
+
 use App\Http\Controllers\Admin;
 
 /*
@@ -40,6 +43,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::get('user/edite/{slug}',[UserController::class,'edit'])->name('user.edit');
     Route::put('/user/{slug}',[UserController::class,'update'])->name('user.update');
     Route::get('/user/softdelete/{slug}',[UserController::class,'softdelete'])->name('user.softdelete');
+    Route::get('/user/restore/{slug}',[UserController::class,'restore'])->name('user.restore');
     Route::delete('/user/{slug}',[UserController::class,'delete'])->name('user.delete');
 
 //Banner route
@@ -50,12 +54,20 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::get('/banner/edit/{slug}',[BannerController::class,'edit'])->name('banner.edit');
     Route::put('/banner/{slug}',[BannerController::class,'update'])->name('banner.update');
     Route::get('/banner/softdelete/{slug}',[BannerController::class,'softdelete'])->name('banner.softdelete');
-    Route::delete('/banner/{slug}',[BannerController::class,'destroy'])->name('banner.delete');
+    Route::get('/banner/restore/{slug}',[BannerController::class,'restore'])->name('banner.restore');
+    // Route::delete('/banner/{slug}',[BannerController::class,'destroy'])->name('banner.delete');
 
+//recycle Route
+Route::get('/recycle',[RecycleController::class,'index'])->name('recycle.index');
+Route::get('/recycle/all',[RecycleController::class,'AllRecycle'])->name('all.index');
 
+  //Basic Setting Route list
+    Route::get('/basic-setting',[ManageController::class,'basic_index'])->name('manage.basic.index');
+     Route::post('/basic-setting',[ManageController::class,'basic_update'])->name('manage.basic.update');
+    // Route::post('/basic-setting',[ManageController::class,'basic_update']->name('manage.basic.update'));
 
-
-
-
+//social media
+Route::get('/social-media',[ManageController::class,'social_index'])->name('social.media.index');
+Route::post('/social-media',[ManageController::class,'social_update'])->name('social.media.update');
 
 require __DIR__.'/auth.php';
