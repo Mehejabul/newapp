@@ -35,7 +35,7 @@
 						<ul id="pagesss" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('manage.basic.index') }}">Basic Setting</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('social.media.index') }}">Social Media</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="">Social Information</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('contact.index') }}">Contact Information</a></li>
 
 						</ul>
 					</li>

@@ -58,16 +58,19 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     // Route::delete('/banner/{slug}',[BannerController::class,'destroy'])->name('banner.delete');
 
 //recycle Route
-Route::get('/recycle',[RecycleController::class,'index'])->name('recycle.index');
-Route::get('/recycle/all',[RecycleController::class,'AllRecycle'])->name('all.index');
+    Route::get('/recycle',[RecycleController::class,'index'])->name('recycle.index');
+    Route::get('/recycle/all',[RecycleController::class,'AllRecycle'])->name('all.index');
 
-  //Basic Setting Route list
+//Basic Setting
     Route::get('/basic-setting',[ManageController::class,'basic_index'])->name('manage.basic.index');
-     Route::post('/basic-setting',[ManageController::class,'basic_update'])->name('manage.basic.update');
-    // Route::post('/basic-setting',[ManageController::class,'basic_update']->name('manage.basic.update'));
+    Route::post('/basic-setting',[ManageController::class,'basic_update'])->name('manage.basic.update');
 
 //social media
-Route::get('/social-media',[ManageController::class,'social_index'])->name('social.media.index');
-Route::post('/social-media',[ManageController::class,'social_update'])->name('social.media.update');
+    Route::get('/social-media',[ManageController::class,'social_index'])->name('social.media.index');
+    Route::post('/social-media',[ManageController::class,'social_update'])->name('social.media.update');
+
+//Contact Informaton
+    Route::get('/contact-information',[ManageController::class,'contact_index'])->name('contact.index');
+    Route::post('/contact-information',[ManageController::class,'contact_update'])->name('contact.update');
 
 require __DIR__.'/auth.php';

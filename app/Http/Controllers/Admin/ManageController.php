@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BasicSetting;
 use App\Models\SocialInfo;
+use App\Models\ContactInfo;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Carbon;
@@ -136,9 +137,10 @@ class ManageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function contact_index()
     {
-        //
+        $data = ContactInfo::where('cont_id',1)->where('cont_status',1)->firstOrFail();
+        return view('admin.setting.contact',compact('data'));
     }
 
     /**
@@ -148,9 +150,32 @@ class ManageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function contact_update(Request $request)
     {
-        //
+        $cont_update = ContactInfo::where('cont_id',1)->update([
+              'cont_phone1' => $request['cont_phone1'],
+              'cont_phone2' => $request['cont_phone2'],
+              'cont_phone3' => $request['cont_phone3'],
+              'cont_phone4' => $request['cont_phone4'],
+              'cont_email1' => $request['cont_email1'],
+              'cont_email2' => $request['cont_email2'],
+              'cont_email3' => $request['cont_email3'],
+              'cont_email4' => $request['cont_email4'],
+              'cont_add1'   => $request['cont_add1'],
+              'cont_add2'   => $request['cont_add2'],
+              'cont_add3'   => $request['cont_add3'],
+              'cont_add4'   => $request['cont_add4'],
+              'cont_status' => 1,
+              'updated_at'  =>Carbon::now()->toDateTimestring(),
+        ]);
+if($cont_update){
+    session::flash('success','successfully update');
+    return redirect()->back();
+}else{
+    session::flash('error','update failed');
+    return redirect()->back();
+}
+
     }
 
     /**

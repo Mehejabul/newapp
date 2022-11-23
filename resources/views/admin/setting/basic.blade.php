@@ -5,7 +5,7 @@
       <div class="card border border-secondary">
         <div class="card-header bg-transparent border-secondary d-flex justify-content-between ">
           <h5 class="card-title">Basic Information</h5>
-          <a href="{{ route('banner.index') }}" class="btn btn-secondary">
+          <a href="{{ route('social.media.index') }}" class="btn btn-secondary">
             <i class="fa fa-list-circle me-2" aria-hidden="true"></i>Social Media</a>
         </div>
 

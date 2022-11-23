@@ -4,9 +4,9 @@
     <div class="col-12">
       <div class="card border border-secondary">
         <div class="card-header bg-transparent border-secondary d-flex justify-content-between ">
-          <h5 class="card-title">Basic Information</h5>
-          <a href="{{ route('banner.index') }}" class="btn btn-secondary">
-            <i class="fa fa-list-circle me-2" aria-hidden="true"></i>Social Media</a>
+          <h5 class="card-title"> Social InformationInformation</h5>
+          <a href="{{ route('contact.index') }}" class="btn btn-secondary">
+            <i class="fa fa-list-circle me-2" aria-hidden="true"></i>Contact Information</a>
         </div>
 
   <div class="card-body">
@@ -42,7 +42,7 @@
                                           <i class="fab fa-facebook" aria-hidden="true"></i>
                                      </span>
                                   <input type="text" class="form-control @error('sm_facebook') is-invalid @enderror" name="sm_facebook" value="{{ $data->sm_facebook }}">
-                                   @error('sm_facebook') <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span> @enderror
+                                   @error('sm_facebooksan') <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span> @enderror
                                 </div>
                         </div>
                 </div>

@@ -17,12 +17,21 @@ return new class extends Migration
             $table->bigIncrements('cont_id');
             $table->string('cont_phone1', 25)->nullable();
             $table->string('cont_phone2', 25)->nullable();
+            $table->string('cont_phone3', 25)->nullable();
+            $table->string('cont_phone4', 25)->nullable();
             $table->string('cont_email1', 50)->nullable();
             $table->string('cont_email2', 50)->nullable();
-            $table->text('cont_add1')->nullable();
-            $table->text('cont_add2')->nullable();
+            $table->string('cont_email3', 50)->nullable();
+            $table->string('cont_email4', 50)->nullable();
+            $table->text('cont_add1',200)->nullable();
+            $table->text('cont_add2',200)->nullable();
+            $table->text('cont_add3',200)->nullable();
+            $table->text('cont_add4',200)->nullable();
             $table->integer('cont_status')->default(1);
+            $table->timestamps();
+
         });
+
     }
 
     /**
