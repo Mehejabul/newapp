@@ -31,7 +31,7 @@
             });
           </script>
         @endif
-    <form method="POST" action="{{ route('banner.update',$datas->banner_slug) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('banner.update',$datas->banner_id) }}" enctype="multipart/form-data">
         @csrf
         @method('put')
         <div class="row">

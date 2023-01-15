@@ -63,8 +63,6 @@ class BannerController extends Controller
         $image = $request->file('banner_image');
         $ban_image = "banner" . time() . rand(100000,1000000) . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(250,250)->save('uploads/banner/' .$ban_image);
-      } else{
-         $ban_image = '';
       }
 
         $insert = Banner::insert([
@@ -109,9 +107,9 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit($banner_id)
     {
-      $datas = Banner::where('banner_status',1)->where('banner_slug', $slug)->firstorFail();
+      $datas = Banner::where('banner_status',1)->where('banner_id', $banner_id)->firstOrFail();
        return view('admin.banner.edite', compact('datas'));
     }
 
@@ -122,35 +120,32 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'banner_title' => 'required',
-            'banner_mid_title' => 'required',
-            'banner_Sub_title' => 'required',
-            'banner_order' => 'required',
+       $this->validate($request,[
+        'banner_title' => 'required',
+        'banner_mid_title' => 'required',
+        'banner_Sub_title' => 'required',
+        'banner_button' => 'required',
+        'banner_url' => 'required',
+        'banner_order' => 'required',
+       ]);
+    $banner = Banner::where('banner_status',1)->where('banner_id',$id)->firstOrFail();
+       if ($request->hasFile('banner_image') ) {
+        if (File::exists('uploads/banner/'. $banner->banner_image)) {
+            File::delete('uploads/banner/' . $banner->banner_image);
+        }
 
-        ]);
+     $image = $request->file('banner_image');
+     $ban_image = "banner" . time() . rand(100000,1000000) . '.' . $image->getClientOriginalExtension();
+     Image::make($image)->resize(250,250)->save('uploads/banner/' .$ban_image);
 
-        $banner = Banner::where('banner_status',1)->where('banner_slug', $slug)->firstorFail();
+       }else{
 
-          if($request->hasFile('banner_image')) {
+            $ban_image = $banner->banner_image;
+       }
 
-               if(File::exists('uploads/banner/' .$banner->banner_image)) {
-               File::delete('uploads/banner/' .$banner->banner_image);
-
-
-            $image = $request->file('banner_image');
-             $ban_image = "banner" . time() . rand(100000,1000000) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(250,250)->save('uploads/banner/' .$ban_image);
-
-         } else{
-
-         $ban_image = $banner->banner_image;
-
-         }
-
-        $update = Banner::where('banner_status',1)->where('banner_slug',$slug)->update([
+    $ban_update = Banner::where('banner_status',1)->where('banner_id',$id)->update([
         'banner_title' => $request['banner_title'],
         'banner_mid_title' => $request['banner_mid_title'],
         'banner_Sub_title' => $request['banner_Sub_title'],
@@ -163,17 +158,16 @@ class BannerController extends Controller
         'banner_slug' => Str::slug($request->banner_title, '-'),
         'banner_status' => 1,
         'updated_at' => Carbon::now()->toDateTimestring(),
-        ]);
 
-        if($update){
-            Session::flash('success', 'Successfuly update banner');
+    ]);
+
+        if($ban_update) {
+            Session::flash('success','Successfully updated');
             return redirect()->back();
         }else{
-            Session::flash('error', "Upadate failed");
+            Session::flash('error', 'Updated failed');
             return redirect()->back();
         }
-
-          }
     }
 
       public function softdelete($slug){
@@ -197,8 +191,29 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+public function restore($slug){
+     $restore = Banner::where('banner_status',0)->where('banner_slug',$slug)->update([
+       'banner_status' => 1,
+       'updated_at' => Carbon::now()->toDatetimestring(),
+      ]);
+      if($restore){
+        Session::flash('success','Sucessfully  Banner restore');
+        return redirect()->back();
+      }else{
+        Session::flash('error',' Banner restore Failed');
+        return redirect()->back();
+      }
+}
+
+    public function destroy($banner_id) {
+      $parmanent_delete = Banner::where('banner_status',0)->where('banner_id',$banner_id)->forceDelete();
+
+        if($parmanent_delete){
+        Session::flash('success','Sucessfully Parmanent delete');
+        return redirect()->back();
+      }else{
+        Session::flash('error','delete Failed');
+        return redirect()->back();
+      }
     }
 }

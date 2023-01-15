@@ -46,7 +46,7 @@
                             </td>
 
 							<td class="table-action">
-                                 <a href="{{ route('banner.edit', $benner->banner_slug) }}"><i class="align-middle" data-feather="edit-2"></i></a>
+                                 <a href="{{ route('banner.edit', $benner->banner_id) }}"><i class="align-middle" data-feather="edit-2"></i></a>
                                  <a href="#"><i class="align-middle" data-feather="eye"></i></a>
                                  <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $benner->banner_slug }}">
                                         <i class="align-middle" data-feather="trash"></i>

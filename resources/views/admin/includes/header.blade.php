@@ -14,8 +14,10 @@
 	<!-- BEGIN SETTINGS -->
 	<!-- Remove this after purchasing -->
 	<link class="js-stylesheet" href="{{asset('contents/admin')}}/css/light.css" rel="stylesheet">
-	<script src="{{ asset('contents/admin') }}{{asset('contents/admin')}}/js/settings.js"></script>
+	{{--  <script src="{{asset('contents/admin')}}/js/settings.js"></script>  --}}
 	<!-- END SETTINGS -->
+
+
 
 
         {{-- Toster Notification Start --}}
@@ -25,4 +27,5 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     {{-- Toster Notification End --}}
+
 </head>

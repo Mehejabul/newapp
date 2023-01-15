@@ -6,6 +6,10 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\RecycleController;
 use App\Http\Controllers\Admin\ManageController;
+use App\Http\Controllers\Admin\PostCategoryController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Forntend\WebsiteController;
+
 
 use App\Http\Controllers\Admin;
 
@@ -29,6 +33,14 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
+//Website route
+
+Route::get('/',[WebsiteController::class,'index'])->name('website.index');
+
+
+
+
+
 //admin route
 Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::get('/',[AdminController::class,'index'])->name('admin.index');
@@ -44,22 +56,24 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::put('/user/{slug}',[UserController::class,'update'])->name('user.update');
     Route::get('/user/softdelete/{slug}',[UserController::class,'softdelete'])->name('user.softdelete');
     Route::get('/user/restore/{slug}',[UserController::class,'restore'])->name('user.restore');
-    Route::delete('/user/{slug}',[UserController::class,'delete'])->name('user.delete');
+    Route::get('/user/destroy/{slug}',[UserController::class,'destroy'])->name('user.destroy');
 
 //Banner route
     Route::get('/banner',[BannerController::class,'index'])->name('banner.index');
     Route::get('/banner/create',[BannerController::class,'create'])->name('banner.create');
     Route::post('/banner',[BannerController::class,'store'])->name('banner.store');
     Route::get('/banner/show/{slug}',[BannerController::class,'show'])->name('banner.show');
-    Route::get('/banner/edit/{slug}',[BannerController::class,'edit'])->name('banner.edit');
-    Route::put('/banner/{slug}',[BannerController::class,'update'])->name('banner.update');
+    Route::get('/banner/edit/{banner_id}',[BannerController::class,'edit'])->name('banner.edit');
+    Route::put('/banner/{banner_id}',[BannerController::class,'update'])->name('banner.update');
     Route::get('/banner/softdelete/{slug}',[BannerController::class,'softdelete'])->name('banner.softdelete');
     Route::get('/banner/restore/{slug}',[BannerController::class,'restore'])->name('banner.restore');
-    // Route::delete('/banner/{slug}',[BannerController::class,'destroy'])->name('banner.delete');
+    Route::get('/banner/destroy/{slug}',[BannerController::class,'destroy'])->name('banner.destroy');
 
 //recycle Route
-    Route::get('/recycle',[RecycleController::class,'index'])->name('recycle.index');
-    Route::get('/recycle/all',[RecycleController::class,'AllRecycle'])->name('all.index');
+    Route::get('/recycle/bin/user',[RecycleController::class,'user_index'])->name('recycle.index');
+    Route::get('/recycle/user',[RecycleController::class,'user_recycle'])->name('recycle.user');
+    Route::get('/recycle/banner',[RecycleController::class,'banner_recycle'])->name('recycle.banner');
+
 
 //Basic Setting
     Route::get('/basic-setting',[ManageController::class,'basic_index'])->name('manage.basic.index');
@@ -72,5 +86,30 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
 //Contact Informaton
     Route::get('/contact-information',[ManageController::class,'contact_index'])->name('contact.index');
     Route::post('/contact-information',[ManageController::class,'contact_update'])->name('contact.update');
+
+      // postController
+    Route::get('/post',[PostController::class,'index'])->name('post.index');
+    Route::get('/post/create',[PostController::class,'create'])->name('post.create');
+    Route::post('/post',[PostController::class,'store'])->name('post.store');
+    Route::get('/post/show/{id}',[PostController::class,'show'])->name('post.show');
+    Route::get('/post/edite/{id}',[PostController::class,'edit'])->name('post.editing');
+    Route::put('/post/{id}',[PostController::class,'update'])->name('post.update');
+    Route::get('/post/softdelete/{id}',[PostController::class,'softdelete'])->name('post.softdelete');
+    Route::get('/post/restore/{id}',[PostController::class,'restore'])->name('post.restore');
+    Route::delete('/post/{id}',[PostController::class,'restore'])->name('post.delete');
+
+//postCategory route
+    Route::get('/post/catgory',[POstCategoryController::class,'index'])->name('post.category.index');
+    Route::get('/post/catgory/create',[POstCategoryController::class,'create'])->name('post.category.create');
+    Route::post('/post/catgory',[POstCategoryController::class,'store'])->name('post.category.store');
+    Route::get('/post/catgory/show/{slug}',[POstCategoryController::class,'show'])->name('post.category.show');
+    Route::get('/post/catgory/edit/{slug}',[POstCategoryController::class,'edit'])->name('post.category.edite');
+    Route::put('/post/catgory/{slug}',[POstCategoryController::class,'update'])->name('post.category.update');
+    Route::get('/post/catgory/softdelete/{slug}',[POstCategoryController::class,'softdelete'])->name('post.category.softdelete');
+    Route::get('/post/catgory/restore/{slug}',[POstCategoryController::class,'restore'])->name('post.category.restore');
+    Route::delete('/post/catgory/{slug}',[POstCategoryController::class,'delete'])->name('post.category.delete');
+
+
+
 
 require __DIR__.'/auth.php';

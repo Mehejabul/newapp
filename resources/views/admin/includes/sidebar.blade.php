@@ -39,6 +39,31 @@
 
 						</ul>
 					</li>
+                      <li class="sidebar-item">
+                        <a data-bs-target="#category" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                          <i class="align-middle" data-feather="tv"> </i>
+                          <span class="align-middle">Post Category</span>
+                        </a>
+						<ul id="category" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('post.category.index') }}">All post category</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('post.category.create') }}">Create Post Category</a></li>
+						</ul>
+					</li>
+                     <li class="sidebar-item">
+                        <a data-bs-target="#post" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                          <i class="align-middle" data-feather="file-text"> </i>
+                          <span class="align-middle">Post</span>
+                        </a>
+						<ul id="post" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('post.index') }}">All post</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('post.create') }}">Create Post</a></li>
+
+
+						</ul>
+					</li>
+                    <li class="sidebar-item">
+						<a class="sidebar-link" href="{{ ('/') }}"> <i class="align-middle" data-feather="globe"></i> <span class="align-middle">website</span> </a>
+					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="{{ route('recycle.index') }}"> <i class="align-middle" data-feather="trash"></i> <span class="align-middle">RecycleBin</span> </a>

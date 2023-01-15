@@ -3,12 +3,12 @@
 <div class="row">
 	<div class="col-12">
 		<div class="card border border-secondary">
-			{{--  <div class="card-header bg-transparent border-secondary d-flex justify-content-between ">
-				<h5 class="card-title">All Users</h5>
-                 <a href="{{ route('user.create') }}" class="btn btn-secondary">
-                    <i class="fa fa-plus-circle me-2" aria-hidden="true"></i>Create User
+            <div class="card-header bg-transparent border-secondary d-flex justify-content-between ">
+				<h5 class="card-title">User Trash</h5>
+                 <a href="{{ route('recycle.index') }}" class="btn btn-secondary">
+                     RecycleBin
                  </a>
-             </div>  --}}
+             </div>
 			<div class="card-body">
 				<table class="table table-bordered dt-responsive nowrap w-100">
 					<thead class="text-center">
@@ -39,12 +39,12 @@
 							<td class="table-action">
                                  <a href="{{ route('user.restore', $data->slug) }}" type="button" class="btn btn-primary">Restore</a>
                                  {{--  <a href="{{ route('user.show', $data->slug) }}"><i class="align-middle" data-feather="eye"></i></a>  --}}
-                                 <a  href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $data->id }}">
+                                 <a  href="#" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $data->slug }}">
                                         Delete
                                  </a>
                             </td>
                                 {{--   Modal start  --}}
-                                  <div class="modal fade" id="defaultModalPrimary{{ $data->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                  <div class="modal fade" id="defaultModalPrimary{{ $data->slug }}" tabindex="-1" role="dialog" aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -55,7 +55,7 @@
 													<p class="mb-0"> Are you want to delete this item??</p>
 												</div>
 												<div class="modal-footer">
-													<a href="{{ route('user.softdelete', $data->slug) }}" type="button" class="btn btn-danger">Yes</a>
+													<a href="{{ route('user.destroy', $data->slug) }}" type="button" class="btn btn-danger">Yes</a>
                                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
 												</div>
 											</div>

@@ -4,7 +4,7 @@
 	<div class="col-12">
 		<div class="card border border-secondary">
 			<div class="card-header bg-transparent border-secondary d-flex justify-content-between ">
-				<h5 class="card-title">All Users</h5>
+				<h5 class="card-title">show Users</h5>
                  <a href="{{ route('user.create') }}" class="btn btn-secondary">
                     <i class="fa fa-plus-circle me-2" aria-hidden="true"></i>Create User
                  </a>

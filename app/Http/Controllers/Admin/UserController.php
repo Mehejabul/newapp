@@ -46,13 +46,11 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' =>['required'],
-            'role' =>['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
        ],[
               'name.required' => 'Please Insert the name',
               'email.required' => 'Please Insert the email',
               'phone.required' => 'Please Insert the Phone Number',
-              'role.required' => 'Please Insert the Role id',
               'password.required' => 'Please Insert the Password',
        ]);
 
@@ -69,7 +67,6 @@ class UserController extends Controller
              'name' => $request['name'],
              'phone' => $request['phone'],
              'email' => $request['email'],
-             'role' => $request['role'],
              'photo' => $user_img,
              'password' => Hash::make($request->password),
              'slug'=> Str::slug($request->name, '-'),
@@ -126,14 +123,10 @@ class UserController extends Controller
 
         'name' => ['required'],
         'phone' => ['required'],
-        'role' => ['required'],
-
       ],[
 
         'name.required' => 'Please edit your name',
         'phone.required' => 'Please edit your phone',
-        'role.required' => 'Please edit your role',
-
       ]);
 
       if($request->hasfile('photo')){
@@ -149,9 +142,8 @@ class UserController extends Controller
          'name' => $request['name'],
          'phone' => $request['phone'],
          'email' => $request['email'],
-         'role' => $request['role'],
          'photo' => $user_image,
-         'slug' => Str::slug($request->name, '-'),
+         'slug' => $slug,
          'status' => 1,
         'updated_at' => Carbon::now()->toDateTimestring(),
 
@@ -202,7 +194,14 @@ class UserController extends Controller
       }
     }
     public function destroy($slug){
-    //   $pardel = User::findOrFail($slug);
-    //    $pardel->delete();
+      $parmanent_delete = User::where('status',0)->where('slug',$slug)->forceDelete();
+
+        if($parmanent_delete){
+        Session::flash('success','Sucessfully Parmanent delete');
+        return redirect()->back();
+      }else{
+        Session::flash('error','delete Failed');
+        return redirect()->back();
+      }
     }
 }

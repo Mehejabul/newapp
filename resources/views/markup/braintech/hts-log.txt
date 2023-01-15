@@ -1,0 +1,25 @@
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 12 Aug 2022 02:42:41 at https://rstheme.com/products/html/braintech/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://rstheme.com/products/html/braintech/index.html -O1 "C:\Users\User\Downloads\braintech" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+02:43:38	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/apple-touch-icon.png (from https://rstheme.com/products/html/braintech/index.html)
+02:46:47	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/case-studies-style1 (from https://rstheme.com/products/html/braintech/index.html)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/assets/css/owl.video.play.png (from https://rstheme.com/products/html/braintech/assets/css/owl.carousel.css)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/assets/images/bg/home13/counter-bg.png (from https://rstheme.com/products/html/braintech/style.css)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/assets/images/services/main-home/icons/bg-box-2.png (from https://rstheme.com/products/html/braintech/style.css)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/assets/images/services/main-home/icons/bg-box-3.png (from https://rstheme.com/products/html/braintech/style.css)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/assets/images/bg/error.jpg (from https://rstheme.com/products/html/braintech/style.css)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/blog-single (from https://rstheme.com/products/html/braintech/index3.html)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/blog-details.htm (from https://rstheme.com/products/html/braintech/index5.html)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/Web Development.html (from https://rstheme.com/products/html/braintech/index8.html)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/about.htmweb-development.html (from https://rstheme.com/products/html/braintech/onepage4.html)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/case-stublog-details.html (from https://rstheme.com/products/html/braintech/onepage4.html)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/web-blog-details.html (from https://rstheme.com/products/html/braintech/onepage6.html)
+02:46:48	Error: 	"Not Found" (404) at link https://rstheme.com/products/html/braintech/web-development.htmcase-studies-style1.html (from https://rstheme.com/products/html/braintech/onepage7.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 4 minutes 9 seconds : 503 links scanned, 488 files written (31869412 bytes overall) [27562158 bytes received at 110691 bytes/sec], 6532448 bytes transferred using HTTP compression in 113 files, ratio 20%, 50.3 requests per connection
+(14 errors, 0 warnings, 0 messages)
