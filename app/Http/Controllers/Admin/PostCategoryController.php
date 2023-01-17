@@ -141,12 +141,26 @@ class PostCategoryController extends Controller
         ]);
 
         if($softdelete) {
-            Session::flash('sucess','sucessfully delete');
+            Session::flash('success','sucessfully delete');
             return redirect()->back();
         }else{
             Session::flash('error','delete failed');
             return rediect()->back();
         }
+    }
+
+    public function restore($slug){
+     $restore = PostCategory::where('postcate_status',0)->where('postcate_slug',$slug)->update([
+           'postcate_status' => 1,
+           'updated_at' => Carbon::now()->toDatetimestring(),
+      ]);
+         if($restore){
+             Session::flash('success','Sucessfully  category restore');
+             return redirect()->back();
+        }else{
+             Session::flash('error',' Category restore Failed');
+             return redirect()->back();
+       }
     }
 
     /**
@@ -155,8 +169,17 @@ class PostCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
-}
+    public function destroy($slug){
+
+      $parmanent_delete = PostCategory::where('postcate_status',0)->where('postcate_slug',$slug)->forceDelete();
+
+           if($parmanent_delete){
+               Session::flash('success','Sucessfully Parmanent delete');
+               return redirect()->back();
+           }else{
+               Session::flash('error','delete Failed');
+              return redirect()->back();
+          }
+
+      }
+   }

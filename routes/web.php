@@ -73,6 +73,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::get('/recycle/bin/user',[RecycleController::class,'user_index'])->name('recycle.index');
     Route::get('/recycle/user',[RecycleController::class,'user_recycle'])->name('recycle.user');
     Route::get('/recycle/banner',[RecycleController::class,'banner_recycle'])->name('recycle.banner');
+    Route::get('/recycle/post',[RecycleController::class,'post_recycle'])->name('recycle.post');
+    Route::get('/recycle/category',[RecycleController::class,'category_recycle'])->name('recycle.category');
 
 
 //Basic Setting
@@ -96,7 +98,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::put('/post/{id}',[PostController::class,'update'])->name('post.update');
     Route::get('/post/softdelete/{id}',[PostController::class,'softdelete'])->name('post.softdelete');
     Route::get('/post/restore/{id}',[PostController::class,'restore'])->name('post.restore');
-    Route::delete('/post/{id}',[PostController::class,'restore'])->name('post.delete');
+    Route::get('/post/destroy/{id}',[PostController::class,'destroy'])->name('post.destroy');
 
 //postCategory route
     Route::get('/post/catgory',[POstCategoryController::class,'index'])->name('post.category.index');
@@ -107,7 +109,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::put('/post/catgory/{slug}',[POstCategoryController::class,'update'])->name('post.category.update');
     Route::get('/post/catgory/softdelete/{slug}',[POstCategoryController::class,'softdelete'])->name('post.category.softdelete');
     Route::get('/post/catgory/restore/{slug}',[POstCategoryController::class,'restore'])->name('post.category.restore');
-    Route::delete('/post/catgory/{slug}',[POstCategoryController::class,'delete'])->name('post.category.delete');
+    Route::get('/post/catgory/{slug}',[POstCategoryController::class,'destroy'])->name('post.category.delete');
 
 
 

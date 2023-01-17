@@ -190,8 +190,31 @@ if($post_update){
             }
     }
 
+    public function restore($id){
+       $restore = Post::where('post_status',0)->where('post_id',$id)->update([
+       'post_status' => 1,
+       'updated_at' => Carbon::now()->toDatetimestring(),
+      ]);
+      if($restore){
+        Session::flash('success','Sucessfully  post restore');
+        return redirect()->back();
+      }else{
+        Session::flash('error',' post restore Failed');
+        return redirect()->back();
+      }
+    }
+
     public function destroy($id)
     {
-        //
+     $parmanent_delete = Post::where('post_status',0)->where('post_id',$id)->forceDelete();
+
+        if($parmanent_delete){
+        Session::flash('success','Sucessfully Parmanent delete');
+        return redirect()->back();
+      }else{
+        Session::flash('error','delete Failed');
+        return redirect()->back();
+      }
     }
+
 }
