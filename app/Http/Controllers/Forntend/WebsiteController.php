@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Forntend;
 
 use App\Http\Controllers\Controller;
+ use App\Models\BasicSetting;
+use App\Models\SocialInfo;
+use App\Models\ContactInfo;
+use App\Models\Banner;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -14,7 +18,11 @@ class WebsiteController extends Controller
      */
     public function index()
     {
-        return view('website.home');
+         $datas =  BasicSetting::where('basic_status',1)->where('basic_id',1)->firstorFail();
+         $socils = SocialInfo::where('sm_status',1)->where('sm_id',1)->firstorFail();
+         $baner =  Banner::where('banner_status',1)->firstOrFail();
+
+        return view('website.home',compact('datas','socils','baner'));
     }
 
     /**
@@ -22,9 +30,9 @@ class WebsiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function blog()
     {
-        //
+        return view('website.blog.blog_grid');
     }
 
     /**

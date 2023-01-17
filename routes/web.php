@@ -36,6 +36,8 @@ Route::get('/dashboard', function () {
 //Website route
 
 Route::get('/',[WebsiteController::class,'index'])->name('website.index');
+Route::get('/blog/grid',[WebsiteController::class,'blog'])->name('website.blog');
+
 
 
 

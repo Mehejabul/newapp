@@ -84,7 +84,7 @@
               <div class="form-group" {{$errors->has('basic_flogo') ? ' has-error':''}}>
                 <div class="mb-3">
                   <label class="form-label">
-                    <strong class="text-secondary"> Basic footerlogo <span class="text-danger">*</span>: </strong>
+                    <strong class="text-secondary"> Basic footerlogo: </strong>
                   </label>
                   <input type="file" class="form-control @error('basic_flogo') is-invalid @enderror" id="footer_logo_input" name="basic_flogo" value="{{ $datas->basic_flogo }}">
                 </div>
@@ -102,7 +102,7 @@
                 @endif
               </div>
 
-                   <div class="col-lg-6 my-2">
+             <div class="col-lg-4 my-2">
               <div class="form-group" {{$errors->has('basic_favicon') ? ' has-error':''}}>
                 <div class="mb-3">
                   <label class="form-label">
@@ -114,7 +114,7 @@
               </div>
             </div>
 
-             <div class="col-lg-4 m-auto">
+             <div class="col-lg-2 m-auto">
                 @if($datas->basic_favicon)
                    <img id="footer_image_preview" src="{{ asset('uploads/settings/favicon/'.$datas->basic_favicon) }}"
                     alt="footer_image" class="img-fluid rounded" width="100" />
@@ -123,6 +123,32 @@
                     alt="footer_image" class="img-fluid rounded" width="100" />
                 @endif
               </div>
+
+              <div class="col-lg-6 my-2">
+              <div class="form-group" {{$errors->has('basic_ftext') ? ' has-error':''}}>
+                <div class="mb-3">
+                  <label class="form-label">
+                    <strong class="text-secondary">Basic Footer text: </strong>
+                  </label>
+                  <textarea type="text" class="form-control @error('basic_ftext') is-invalid @enderror" name="basic_ftext">{{ $datas->basic_ftext }}</textarea>
+                </div>
+                 @error('basic_ftext') <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span> @enderror
+              </div>
+            </div>
+
+              <div class="col-lg-6 my-2">
+              <div class="form-group" {{$errors->has('basic_newstext') ? ' has-error':''}}>
+                <div class="mb-3">
+                  <label class="form-label">
+                    <strong class="text-secondary">Basic News text: </strong>
+                  </label>
+                  <textarea type="text" class="form-control @error('basic_newstext') is-invalid @enderror" name="basic_newstext">{{ $datas->basic_newstext }}</textarea>
+                </div>
+                 @error('basic_newstext') <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span> @enderror
+              </div>
+            </div>
+
+
 
             <div class="form-group">
               <button type="submit" class="btn btn-secondary w-md">update</button>

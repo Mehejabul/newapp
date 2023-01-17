@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('basic_title',190)->nullable();
             $table->string('basic_logo')->nullable();
             $table->string('basic_flogo')->nullable();
+            $table->longtext('basic_ftext')->nullable();
+            $table->longtext('basic_newstext')->nullable();
             $table->string('basic_favicon')->nullable();
             $table->integer('basic_status')->default(1);
             $table->timestamps();

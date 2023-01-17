@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('postcate_id');
             $table->string('postcate_name',100)->unique();
             $table->string('postcate_remarks',200)->nullable();
-            $table->string('postcate_url',200)->unique();
+            $table->string('postcate_url',200)->nullable();
             $table->integer('postcate_creator')->nullable();
             $table->integer('postcate_editor')->nullable();
             $table->string('postcate_slug',50)->nullable();

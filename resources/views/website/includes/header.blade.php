@@ -56,7 +56,7 @@
 
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- start logo -->
-                                        <a href="index-2.html" class="navbar-brand"><img src="{{ asset('contents/forntend') }}/img/logos/logo-inner.png" alt="logo"></a>
+                                        <a href="{{ route('website.index') }}" class="navbar-brand"><img src="{{ asset('uploads/settings/header_logo/') }}/{{ $datas->basic_logo }}" alt="logo"></a>
                                         <!-- end logo -->
                                     </div>
 
@@ -64,7 +64,7 @@
 
                                     <!-- menu area -->
                                     <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
-                                        <li><a href="index-2.html">Home</a></li>
+                                        <li><a href="{{ route('website.index') }}">Home</a></li>
                                         <li>
                                             <a href="#!">Pages</a>
                                             <ul>
@@ -98,7 +98,7 @@
                                         <li>
                                             <a href="#!">Blog</a>
                                             <ul>
-                                                <li><a href="blog-grid.html">Blog Grid</a></li>
+                                                <li><a href="{{ route('website.blog') }}">Blog Grid</a></li>
                                                 <li><a href="blog-list.html">Blog List</a></li>
                                                 <li><a href="blog-detail.html">Blog Detail</a></li>
                                             </ul>

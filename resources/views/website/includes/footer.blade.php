@@ -4,16 +4,18 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 mb-2-5 mb-lg-0">
                         <div class="w-80 mb-1-6 mb-lg-1-9">
-                            <img src="{{asset('contents/forntend')}}/img/logos/footer-light-logo.png" alt="...">
+
+
+                            <img src="{{asset('uploads/settings/footer_logo/')}}/{{ $datas->basic_flogo }}" alt="...">
                         </div>
                         <p class="text-white">
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                             {{ $datas->basic_ftext }}
                         </p>
                         <ul class="footer-social-icon ps-0 mb-0">
-                            <li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="{{ $socils->sm_facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="{{ $socils->sm_twitter }}"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="{{ $socils->sm_youtube }}"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="{{ $socils->sm_linkedin }}"><i class="fab fa-linkedin-in"></i></a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-2-5 mb-lg-0">
@@ -43,7 +45,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div>
                             <h3 class="footer-title">Our Newsletter</h3>
-                            <p class="alt-font text-white">You can get modern day replace from us with the aid of using subscribing to our newsletter.</p>
+                            <p class="alt-font text-white">{{ $datas->basic_newstext }}</p>
                             <form class="quform newsletter-footer" action="https://seo.websitelayout.net/quform/newsletter-two.php" method="post" enctype="multipart/form-data" onclick="">
 
                                 <div class="quform-elements">

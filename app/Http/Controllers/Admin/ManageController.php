@@ -70,6 +70,8 @@ class ManageController extends Controller
         'basic_logo' => $header_logo_name,
         'basic_flogo' => $footer_logo_name,
         'basic_favicon' => $fav_icon_name,
+        'basic_ftext' => $request['basic_ftext'],
+        'basic_newstext' => $request['basic_newstext'],
         'updated_at' => Carbon::now()->toDateTimestring(),
     ]);
 

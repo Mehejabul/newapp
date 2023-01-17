@@ -44,10 +44,8 @@ class PostCategoryController extends Controller
         // dd($request->all());
         $this->validate($request,[
            "postcate_name" => 'required',
-           "postcate_url" =>  'required',
         ],[
             'postcate_name.required' => 'Please enter post category name',
-            'postcate_url.required' => 'please enter the post catrgoty url',
 
         ]);
 
@@ -104,11 +102,9 @@ class PostCategoryController extends Controller
     {
         $this->validate($request,[
            'postcate_name' => ['required'],
-           'postcate_url' => ['required'],
         ],[
 
             'postcate_name.required' => 'pleae insert post category name',
-            'postcate_url.required' => 'pleae insert post category url',
 
         ]);
    $update = Postcategory::where('postcate_status',1)->where('postcate_slug',$slug)->update([
