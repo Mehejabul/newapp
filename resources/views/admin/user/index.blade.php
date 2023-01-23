@@ -37,7 +37,7 @@
 							<td>{{ $data['role'] }}</td>
 
 							<td class="table-action">
-                                 <a href="{{ route('user.edit', $data->slug) }}" type="button"><i class="align-middle" data-feather="edit-2"></i></a>
+                                 <a href="{{ route('user.edit', $data->id) }}" type="button"><i class="align-middle" data-feather="edit-2"></i></a>
                                  <a href="{{ route('user.show', $data->slug) }}"><i class="align-middle" data-feather="eye"></i></a>
                                  <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $data->id }}">
                                         <i class="align-middle" data-feather="trash"></i>

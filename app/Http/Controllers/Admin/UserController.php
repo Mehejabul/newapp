@@ -104,8 +104,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug){
-      $edit_user = User::where('status',1)->where('slug',$slug)->firstOrFail();
+    public function edit($id){
+      $edit_user = User::where('status',1)->where('id',$id)->firstOrFail();
       return view('admin.user.edit',compact('edit_user'));
 
     }
@@ -117,8 +117,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug){
-
+    public function update(Request $request, $id){
+        // dd($request->all());
       $this->validate($request,[
 
         'name' => ['required'],
@@ -132,18 +132,18 @@ class UserController extends Controller
       if($request->hasfile('photo')){
         $image = $request->file('photo');
         $user_image = 'user_edit' . time() . rand(100000,100000) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(50,50)->save('Uploads/user/image/' . $user_image);
+        Image::make($image)->resize(50,50)->save('uploads/user/image/' . $user_image);
 
       }else{
         $user_image = '';
       }
 
-      $update = User::where('slug',$slug)->where('status', 1)->update([
+      $update = User::where('status', 1)->where('id',$id)->update([
          'name' => $request['name'],
          'phone' => $request['phone'],
          'email' => $request['email'],
          'photo' => $user_image,
-         'slug' => $slug,
+         'slug' => Str::slug($request->name,'-'),
          'status' => 1,
         'updated_at' => Carbon::now()->toDateTimestring(),
 

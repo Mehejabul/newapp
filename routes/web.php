@@ -36,7 +36,9 @@ Route::get('/dashboard', function () {
 //Website route
 
 Route::get('/',[WebsiteController::class,'index'])->name('website.index');
-Route::get('/blog/grid',[WebsiteController::class,'blog'])->name('website.blog');
+Route::get('/blog/grid',[WebsiteController::class,'blog_grid'])->name('blog.grid');
+Route::get('/blog/detail',[WebsiteController::class,'blog_detail'])->name('blog.detail');
+
 
 
 
@@ -54,8 +56,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::get('/user/create',[UserController::class,'create'])->name('user.create');
     Route::post('/user',[UserController::class,'store'])->name('user.store');
     Route::get('/user/show/{slug}',[UserController::class,'show'])->name('user.show');
-    Route::get('user/edite/{slug}',[UserController::class,'edit'])->name('user.edit');
-    Route::put('/user/{slug}',[UserController::class,'update'])->name('user.update');
+    Route::get('user/edite/{id}',[UserController::class,'edit'])->name('user.edit');
+    Route::PUT('/user/{slug}',[UserController::class,'update'])->name('user.update');
     Route::get('/user/softdelete/{slug}',[UserController::class,'softdelete'])->name('user.softdelete');
     Route::get('/user/restore/{slug}',[UserController::class,'restore'])->name('user.restore');
     Route::get('/user/destroy/{slug}',[UserController::class,'destroy'])->name('user.destroy');

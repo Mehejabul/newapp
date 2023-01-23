@@ -54,6 +54,10 @@
                             <div class="menu_area">
                                 <nav class="navbar navbar-expand-lg navbar-light p-0">
 
+                                    @php
+                                           $datas = App\Models\BasicSetting::where('basic_status',1)->where('basic_id',1)->firstorFail();
+                                    @endphp
+
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- start logo -->
                                         <a href="{{ route('website.index') }}" class="navbar-brand"><img src="{{ asset('uploads/settings/header_logo/') }}/{{ $datas->basic_logo }}" alt="logo"></a>
@@ -98,9 +102,10 @@
                                         <li>
                                             <a href="#!">Blog</a>
                                             <ul>
-                                                <li><a href="{{ route('website.blog') }}">Blog Grid</a></li>
+                                                <li><a href="{{ route('blog.grid') }}">Blog Grid</a></li>
                                                 <li><a href="blog-list.html">Blog List</a></li>
-                                                <li><a href="blog-detail.html">Blog Detail</a></li>
+                                                <li><a href="#">Blog Detail</a></li>
+
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">Contacts</a></li>

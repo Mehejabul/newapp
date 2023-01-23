@@ -31,7 +31,7 @@
             });
           </script>
         @endif
-    <form method="POST" action="{{ route('user.update', $edit_user->slug) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('user.update', $edit_user->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">

@@ -5,12 +5,19 @@
                     <div class="col-lg-3 col-md-6 mb-2-5 mb-lg-0">
                         <div class="w-80 mb-1-6 mb-lg-1-9">
 
+                             @php
+                                 $datas = App\Models\BasicSetting::where('basic_status',1)->where('basic_id',1)->firstorFail();
+                             @endphp
 
                             <img src="{{asset('uploads/settings/footer_logo/')}}/{{ $datas->basic_flogo }}" alt="...">
                         </div>
                         <p class="text-white">
                              {{ $datas->basic_ftext }}
                         </p>
+
+                        @php
+                             $socils = App\Models\SocialInfo::where('sm_status',1)->where('sm_id',1)->firstorFail();
+                        @endphp
                         <ul class="footer-social-icon ps-0 mb-0">
                             <li><a href="{{ $socils->sm_facebook }}"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="{{ $socils->sm_twitter }}"><i class="fab fa-twitter"></i></a></li>

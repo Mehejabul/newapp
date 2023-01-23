@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\SocialInfo;
 use App\Models\ContactInfo;
 use App\Models\Banner;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -30,9 +32,10 @@ class WebsiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function blog()
-    {
-        return view('website.blog.blog_grid');
+    public function blog_grid(){
+        $recent_post = Post:: with('Postcategory','creator')->orderBY("created_at","DESC")->paginate(6);
+        $users = User::where('status',1)->OrderBy('id','ASC')->first();
+        return view('website.blog.blog_grid',compact('recent_post','users'));
     }
 
     /**
