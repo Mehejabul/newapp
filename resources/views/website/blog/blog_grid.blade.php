@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-blog grid
 @include('website.includes.header')
         <!-- PAGE TITLE
         ================================================== -->
@@ -60,107 +59,6 @@ blog grid
                         </article>
                     </div>
                     @endforeach
-
-                    {{--  <div class="col-lg-4 col-md-6 mb-1-6 mb-md-1-9 mb-lg-2-5">
-                        <article class="card card-style2 border-none h-100">
-                            <div class="card-img">
-                                <img src="{{asset('contents/forntend')}}/img/blog/blog-02.jpg" alt="...">
-                            </div>
-                            <div class="blog-info-tag">
-                                <div class="text-end"><a href="#!" class="bg-yellow">Marketing</a></div>
-                            </div>
-                            <div class="card-body">
-                                <small class="font-weight-500">01 Feb 2021</small>
-                                <h3 class="h4 mt-2 mb-3"><a href="blog-detail.html">The seven secrets that you shouldn't know about Seo.</a></h3>
-                                <p class="mb-3">It supplies data on generally look for explicit catchphrase terms, so you can measure how significant and serious they are.</p>
-                                <div class="blog-author">
-                                    <div class="blog-author-img">
-                                        <img src="{{asset('contents/forntend')}}/img/avatar/avatar-02.jpg" alt="...">
-                                    </div> <span class="text-yellow">Ivo Janata</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-1-6 mb-md-1-9 mb-lg-2-5">
-                        <article class="card card-style2 border-none h-100">
-                            <div class="card-img">
-                                <img src="{{asset('contents/forntend')}}/img/blog/blog-03.jpg" alt="...">
-                            </div>
-                            <div class="blog-info-tag">
-                                <div class="text-end"><a href="#!" class="bg-blue">SEO Analysis</a></div>
-                            </div>
-                            <div class="card-body">
-                                <small class="font-weight-500">29 Jan 2021</small>
-                                <h3 class="h4 mt-2 mb-3"><a href="blog-detail.html">Things that make you love and hate Seo.</a></h3>
-                                <p class="mb-3">It supplies data on generally look for explicit catchphrase terms, so you can measure how significant and serious they are.</p>
-                                <div class="blog-author">
-                                    <div class="blog-author-img">
-                                        <img src="{{asset('contents/forntend')}}/img/avatar/avatar-03.jpg" alt="...">
-                                    </div> <span class="text-blue">Lisa Michalski</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-1-6 mb-md-1-9 mb-lg-0">
-                        <article class="card card-style2 border-none h-100">
-                            <div class="card-img">
-                                <img src="{{asset('contents/forntend')}}/img/blog/blog-04.jpg" alt="...">
-                            </div>
-                            <div class="blog-info-tag">
-                                <div class="text-end"><a href="#!" class="bg-purple">Digital marketing</a></div>
-                            </div>
-                            <div class="card-body">
-                                <small class="font-weight-500">18 Jan 2021</small>
-                                <h3 class="h4 mt-2 mb-3"><a href="blog-detail.html">The reasons why we love digital marketing.</a></h3>
-                                <p class="mb-3">It supplies data on generally look for explicit catchphrase terms, so you can measure how significant and serious they are.</p>
-                                <div class="blog-author">
-                                    <div class="blog-author-img">
-                                        <img src="{{asset('contents/forntend')}}/img/avatar/avatar-04.jpg" alt="...">
-                                    </div> <span class="text-purple">Brenda Barton</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-1-6 mb-md-0">
-                        <article class="card card-style2 border-none h-100">
-                            <div class="card-img">
-                                <img src="{{asset('contents/forntend')}}/img/blog/blog-05.jpg" alt="...">
-                            </div>
-                            <div class="blog-info-tag">
-                                <div class="text-end"><a href="#!" class="bg-pink">Business</a></div>
-                            </div>
-                            <div class="card-body">
-                                <small class="font-weight-500">12 Jan 2021</small>
-                                <h3 class="h4 mt-2 mb-3"><a href="blog-detail.html">Why you should not go to business.</a></h3>
-                                <p class="mb-3">It supplies data on generally look for explicit catchphrase terms, so you can measure how significant and serious they are.</p>
-                                <div class="blog-author">
-                                    <div class="blog-author-img">
-                                        <img src="{{asset('contents/forntend')}}/img/avatar/avatar-05.jpg" alt="...">
-                                    </div> <span class="text-pink">Stanley Jenkins</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <article class="card card-style2 border-none h-100">
-                            <div class="card-img">
-                                <img src="{{asset('contents/forntend')}}/img/blog/blog-06.jpg" alt="...">
-                            </div>
-                            <div class="blog-info-tag">
-                                <div class="text-end"><a href="#!" class="bg-light-blue">Analysis</a></div>
-                            </div>
-                            <div class="card-body">
-                                <small class="font-weight-500">06 Jan 2021</small>
-                                <h3 class="h4 mt-2 mb-3"><a href="blog-detail.html">Is Analysis The Most Trending Thing Now?</a></h3>
-                                <p class="mb-3">It supplies data on generally look for explicit catchphrase terms, so you can measure how significant and serious they are.</p>
-                                <div class="blog-author">
-                                    <div class="blog-author-img">
-                                        <img src="{{asset('contents/forntend')}}/img/avatar/avatar-06.jpg" alt="...">
-                                    </div> <span class="text-light-blue">Robert Anderson</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>  --}}
                 </div>
                 <div class="row">
                     <div class="col-sm-12">

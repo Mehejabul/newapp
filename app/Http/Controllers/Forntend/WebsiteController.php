@@ -9,6 +9,7 @@ use App\Models\ContactInfo;
 use App\Models\Banner;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\PostCategory;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -36,6 +37,14 @@ class WebsiteController extends Controller
         $recent_post = Post:: with('Postcategory','creator')->orderBY("created_at","DESC")->paginate(6);
         $users = User::where('status',1)->OrderBy('id','ASC')->first();
         return view('website.blog.blog_grid',compact('recent_post','users'));
+    }
+
+    public function blog_list(){
+        $posts = Post::with('Postcategory','creator',)->orderBy("post_id","Asc")->limit(4)->get();
+        $users = User::where('status',1)->OrderBy('id','ASC')->first();
+        $popular_post = Post:: with('Postcategory','creator')->inRandomOrder()->limit(3)->get();
+        $categories = PostCategory::get();
+        return view('website.blog.blog_list', compact('posts','users','categories','popular_post'));
     }
 
     /**

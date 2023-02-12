@@ -103,7 +103,7 @@
                                             <a href="#!">Blog</a>
                                             <ul>
                                                 <li><a href="{{ route('blog.grid') }}">Blog Grid</a></li>
-                                                <li><a href="blog-list.html">Blog List</a></li>
+                                                <li><a href="{{ route('blog.list') }}">Blog List</a></li>
                                                 <li><a href="#">Blog Detail</a></li>
 
                                             </ul>
