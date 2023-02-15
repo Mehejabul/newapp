@@ -4,7 +4,7 @@
 	<div class="col-12">
 		<div class="card border border-secondary">
 			 <div class="card-header bg-transparent border-secondary d-flex justify-content-between ">
-				<h5 class="card-title">Banner trush</h5>
+				<h5 class="card-title">post trush</h5>
                  <a href="{{ route('recycle.index') }}" class="btn btn-secondary">
                      RecycleBin
                  </a>

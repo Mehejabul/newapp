@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RecycleController;
 use App\Http\Controllers\Admin\ManageController;
 use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Forntend\WebsiteController;
 
 
@@ -80,6 +81,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::get('/recycle/banner',[RecycleController::class,'banner_recycle'])->name('recycle.banner');
     Route::get('/recycle/post',[RecycleController::class,'post_recycle'])->name('recycle.post');
     Route::get('/recycle/category',[RecycleController::class,'category_recycle'])->name('recycle.category');
+    Route::get('/recycle/tag',[RecycleController::class,'tag_recycle'])->name('recycle.tag');
 
 
 //Basic Setting
@@ -116,7 +118,16 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::get('/post/catgory/restore/{slug}',[POstCategoryController::class,'restore'])->name('post.category.restore');
     Route::get('/post/catgory/{slug}',[POstCategoryController::class,'destroy'])->name('post.category.delete');
 
-
+//tagController
+    Route::get('/tag',[TagController::class,'index'])->name('tag.index');
+    Route::get('/tag/crate',[TagController::class,'create'])->name('tag.create');
+    Route::post('/tag',[TagController::class,'store'])->name('tag.store');
+    Route::get('/tag/edit/{slug}',[TagController::class,'edit'])->name('tag.edit');
+    Route::get('/tag/show/{slug}',[TagController::class,'show'])->name('tag.show');
+    Route::put('/tag/{slug}',[TagController::class,'update'])->name('tag.update');
+    Route::get('/tag/softdelete/{slug}',[TagController::class,'softelete'])->name('tag.softdelete');
+    Route::get('/tag/restore/{slug}',[TagController::class,'restore'])->name('tag.restore');
+    Route::get('/tag/destroy/{slug}',[TagController::class,'destroy'])->name('tag.destroy');
 
 
 require __DIR__.'/auth.php';
