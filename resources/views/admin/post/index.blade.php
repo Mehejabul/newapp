@@ -14,29 +14,26 @@
 					<thead class="text-center">
 
 						<tr>
-							<th> Post name</th>
-                            <th> Postcate id</th>
-							<th> Post feature image </th>
-							<th> Post url </th>
-							<th> Post status </th>
+							<th> Image</th>
+                            <th> Title</th>
+							<th> category </th>
+							<th> Tags</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody class="text-center">
                         @foreach ($datas as $data )
 
-
-
-							<td>{{ $data->post_title }}</td>
-							<td>{{ $data->postcategory->postcate_name }}</td>
-                            <td>
+						   <td>
                                 @if($data->post_feature_image)
                                     <img src="{{ asset('uploads/post/' . $data->post_feature_image) }}" alt="post_image" width="50px">
                                 @else
                                 <img src="{{ asset('uploads/avatar.png') }}" alt="no_image" width="50px">
                                 @endif
                             </td>
-                             <td>{{ $data->post_url }}</td>
+							<td>{{ $data->post_title }}</td>
+							<td>{{ $data->postcategory->postcate_name }}</td>
+{{--
 							<td>
                                 @if($data->post_status == 1)
                                        <div class="badge badge-soft-success font-size-12">Active</div>
@@ -45,11 +42,14 @@
                                 @endif
 
 
-                            </td>
+                            </td>  --}}
+						<td>
+                                {{$data->tags}}
+							</td>
 
 
 							<td class="table-action">
-                                 <a href="{{ route('post.editing',$data->post_id) }}"><i class="align-middle" data-feather="edit-2"></i></a>
+                                 <a href="{{ route('post.editing',$data->reviwer_slug) }}"><i class="align-middle" data-feather="edit-2"></i></a>
                                  <a href="{{ route('post.show',$data->post_id) }}"><i class="align-middle" data-feather="eye"></i></a>
                                  <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $data->post_id }}">
                                         <i class="align-middle" data-feather="trash"></i>

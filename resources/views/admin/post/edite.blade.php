@@ -97,6 +97,26 @@
 
                         </div>
 
+                        <div class="col-lg-12  my-2">
+							<div class="form-group">
+                                <div class="ml-3">
+									<label class="form-label"> <strong class="text-secondary"> Tags: </strong> </label>
+                                     @foreach ($tags as $tag )
+                                           <div class="form-check form-check-inline">
+                                             <input class="form-check-input" name="tags[]" type="checkbox" id="tag{{ $tag->tag_id }}" value="{{ $tag->tag_id }}"
+                                             @foreach ($data->tags as $t )
+
+                                           @if   (@checked(old($tag->tag_id, $t->tag_id))) @endif
+                                                 {{--  @if($tag->post_id == $t->post_id) checked @endif  --}}
+                                             @endforeach
+                                             />
+                                          <label for="tag{{ $tag->tag_id }}" class="form-check-label">{{ $tag->tag_name }} </label>
+                                      </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
                          <div class="col-lg-12  my-4">
 							<div class="form-group">
 								<div class="mb-3">

@@ -16,10 +16,15 @@ return new class extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->bigIncrements('tag_id');
             $table->string('tag_name',100)->unique();
-            $table->string('tag_slug',100);
-            $table->string('tag_remarks',100);
+            $table->string('tag_slug',100)->unique();
+            $table->string('tag_remarks',100)->nullable();
             $table->integer('tag_status')->default(1);
             $table->timestamps();
+        });
+
+          Schema::create('post_tag', function (Blueprint $table) {
+            $table->integer('post_id');
+            $table->integer('tag_id');
         });
     }
 
@@ -31,5 +36,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('tags');
+        Schema::dropIfExists('post_tag');
     }
 };

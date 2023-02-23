@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\str;
 use Illuminate\Support\Facades\Session;
@@ -21,6 +22,7 @@ class PostController extends Controller
      */
     public function index()
     {
+
         $datas = Post::where('post_status',1)->OrderBy('post_id', 'DESC')->get();
         return view('admin.post.index',compact('datas'));
     }
@@ -32,7 +34,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        $tags = Tag::all();
+        return view('admin.post.create',compact('tags'));
     }
 
     /**
@@ -78,6 +81,8 @@ class PostController extends Controller
 
         ]);
 
+        $insert->tags()->attach($request->tags);
+
         if($insert){
             Session::flash('success','Successfully insert');
             return redirect()->back();
@@ -109,8 +114,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $tags = Tag::all();
         $data = Post::where('post_status',1)->where('post_id',$id)->firstorFail();
-        return view('admin.post.edite',compact('data'));
+        return view('admin.post.edite',compact(['data','tags']));
     }
 
     /**
@@ -157,6 +163,9 @@ class PostController extends Controller
            'post_status' => 1,
            'updated_at' => Carbon::now()
       ]);
+
+    // $post_update->tags()->sync($request->tags[]);
+
 
 if($post_update){
     Session::flash('success', 'sucessfully update');

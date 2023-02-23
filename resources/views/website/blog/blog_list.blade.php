@@ -50,7 +50,8 @@
                                     </div>
                                     <div class="card-body">
                                         <small class="font-weight-500">{{ $post->created_at->format("d Y M") }}</small>
-                                        <h3 class="h4 mt-2 mb-3"><a href="blog-detail.html">{{ $post->post_title }}</a></h3>
+                                        <h3 class="h4 mt-2 mb-3">
+                                            <a href="{{ route('blog.detail',['slug' => $post->post_slug]) }}">{{ $post->post_title }}</a></h3>
                                         <p class="mb-3">{{ Str::limit($post->post_details, 200) }}</p>
                                         <div class="blog-author">
                                             <div class="blog-author-img">
@@ -208,14 +209,10 @@
                                 <div class="widget">
                                     <h6 class="widget-title">Popular Tags</h6>
                                     <ul class="blog-tags ps-0">
-                                        <li><a href="#!">SEO</a></li>
-                                        <li><a href="#!">Analysis</a></li>
-                                        <li><a href="#!">PPC</a></li>
-                                        <li><a href="#!">Marketing</a></li>
-                                        <li><a href="#!">SMM</a></li>
-                                        <li><a href="#!">Digital</a></li>
-                                        <li><a href="#!">Optimize</a></li>
-                                        <li><a href="#!">Agency</a></li>
+                                        @foreach ( $tags as $tag)
+                                           <li><a href="#!">{{ $tag->tag_name }}</a></li>
+                                        @endforeach
+
                                     </ul>
                                 </div>
                             </div>

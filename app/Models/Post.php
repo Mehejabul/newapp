@@ -22,4 +22,6 @@ class Post extends Model
         return $this->hasOne(User::class, 'id', 'post_editor');
     }
 
+
+
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ManageController;
 use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Forntend\WebsiteController;
 
 
@@ -129,5 +130,14 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::get('/tag/restore/{slug}',[TagController::class,'restore'])->name('tag.restore');
     Route::get('/tag/destroy/{slug}',[TagController::class,'destroy'])->name('tag.destroy');
 
-
+//ReviewController
+    Route::get('/review',[ReviewController::class,'index'])->name('review.index');
+    Route::get('/review/crate',[ReviewController::class,'create'])->name('review.create');
+    Route::post('/review',[ReviewController::class,'store'])->name('review.store');
+    Route::get('/review/edit/{slug}',[ReviewController::class,'edit'])->name('review.edit');
+    Route::get('/review/show/{slug}',[ReviewController::class,'show'])->name('review.show');
+    Route::put('/review/{slug}',[ReviewController::class,'update'])->name('review.update');
+    Route::get('/review/softdelete/{slug}',[ReviewController::class,'softelete'])->name('review.softdelete');
+    Route::get('/review/restore/{slug}',[ReviewController::class,'restore'])->name('review.restore');
+    Route::get('/review/destroy/{slug}',[ReviewController::class,'destroy'])->name('review.destroy');
 require __DIR__.'/auth.php';

@@ -102,9 +102,10 @@
                                         <li>
                                             <a href="#!">Blog</a>
                                             <ul>
+                                                {{--  $post = App\Models\Post::all();  --}}
                                                 <li><a href="{{ route('blog.grid') }}">Blog Grid</a></li>
                                                 <li><a href="{{ route('blog.list') }}">Blog List</a></li>
-                                                <li><a href="#">Blog Detail</a></li>
+                                                <li><a href="{{ route('blog.detail') }}">Blog Detail</a></li>
 
                                             </ul>
                                         </li>

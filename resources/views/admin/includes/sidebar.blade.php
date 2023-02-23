@@ -73,6 +73,17 @@
 					</li>
 
                     <li class="sidebar-item">
+                        <a data-bs-target="#review" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                          <i class="align-middle" data-feather="award"> </i>
+                          <span class="align-middle">Review</span>
+                        </a>
+						<ul id="review" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('review.index') }}">All review</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('review.create') }}">Create review</a></li>
+						</ul>
+					</li>
+
+                    <li class="sidebar-item">
 						<a class="sidebar-link" href="{{ ('/') }}"> <i class="align-middle" data-feather="globe"></i> <span class="align-middle">website</span> </a>
 					</li>
 

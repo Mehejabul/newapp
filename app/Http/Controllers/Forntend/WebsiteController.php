@@ -8,8 +8,10 @@ use App\Models\SocialInfo;
 use App\Models\ContactInfo;
 use App\Models\Banner;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\PostCategory;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -44,7 +46,19 @@ class WebsiteController extends Controller
         $users = User::where('status',1)->OrderBy('id','ASC')->first();
         $popular_post = Post:: with('Postcategory','creator')->inRandomOrder()->limit(3)->get();
         $categories = PostCategory::get();
-        return view('website.blog.blog_list', compact('posts','users','categories','popular_post'));
+        $tags = Tag::all();
+        return view('website.blog.blog_list', compact('posts','users','categories','popular_post','tags'));
+    }
+
+    public function blog_detail(){
+        $posts = Post::with('Postcategory','creator',)->orderBy("post_id","Asc")->limit(1)->get();
+        $releted_post = Post:: with('Postcategory','creator')->inRandomOrder()->limit(2)->get();
+        $popular_post = Post:: with('Postcategory','creator')->inRandomOrder()->limit(3)->get();
+        $tags = Tag::all();
+        $users = User::where('status',1)->OrderBy('id','ASC')->first();
+         $categories = PostCategory::get();
+         $reviews = Review::get();
+         return view('website.blog.blog_detail',compact('posts','releted_post','users','categories','popular_post','tags','reviews'));
     }
 
     /**
