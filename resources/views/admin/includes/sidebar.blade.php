@@ -71,6 +71,16 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('tag.create') }}">Create tag</a></li>
 						</ul>
 					</li>
+                    <li class="sidebar-item">
+                        <a data-bs-target="#page" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                          <i class="align-middle" data-feather="book"> </i>
+                          <span class="align-middle">page</span>
+                        </a>
+						<ul id="page" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('page.index') }}">All page</li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('page.create') }}">Create page</a></li>
+						</ul>
+					</li>
 
                     <li class="sidebar-item">
                         <a data-bs-target="#review" data-bs-toggle="collapse" class="sidebar-link collapsed">

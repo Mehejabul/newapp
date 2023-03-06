@@ -301,7 +301,7 @@
                                                     <a href="{{ $review->reviwer_instagram }}"><i class="fab fa-instagram"></i></a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ $review->reviwer_instagram }}"><i class="fab fa-youtube"></i></a>
+                                                    <a href="{{ $review->reviwer_instagramphp  }}"><i class="fab fa-youtube"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
