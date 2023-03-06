@@ -71,14 +71,28 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('tag.create') }}">Create tag</a></li>
 						</ul>
 					</li>
+
+
                     <li class="sidebar-item">
-                        <a data-bs-target="#page" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                        <a data-bs-target="#pag" data-bs-toggle="collapse" class="sidebar-link collapsed">
                           <i class="align-middle" data-feather="book"> </i>
                           <span class="align-middle">page</span>
                         </a>
-						<ul id="page" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('page.index') }}">All page</li>
+						<ul id="pag" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('page.index') }}">All page</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('page.create') }}">Create page</a></li>
+						</ul>
+					</li>
+
+
+                     <li class="sidebar-item">
+                        <a data-bs-target="#content" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                          <i class="align-middle" data-feather="book-open"> </i>
+                          <span class="align-middle">content</span>
+                        </a>
+						<ul id="content" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('content.index') }}">All content</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ route('content.create') }}">Create content</a></li>
 						</ul>
 					</li>
 

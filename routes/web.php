@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Forntend\WebsiteController;
 
 
@@ -141,6 +142,17 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
       Route::get('/page/softdelete/{slug}',[PageController::class,'softdelete'])->name('page.softdelete');
       Route::get('/page/restore/{slug}',[PageController::class,'restore'])->name('page.restore');
       Route::get('/page/destroy/{slug}',[PageController::class,'destroy'])->name('page.destroy');
+
+      //contentController
+      Route::get('/content',[ContentController::class,'index'])->name('content.index');
+      Route::get('/content/create',[ContentController::class,'create'])->name('content.create');
+      Route::post('/content',[ContentController::class,'store'])->name('content.store');
+      Route::get('/content/edit/{slug}',[ContentController::class,'edit'])->name('content.edit');
+      Route::get('/content/show/{slug}',[ContentController::class,'show'])->name('content.show');
+      Route::put('/content/{slug}',[ContentController::class,'update'])->name('content.update');
+      Route::get('/content/softdelete/{slug}',[ContentController::class,'softdelete'])->name('content.softdelete');
+      Route::get('/content/restore/{slug}',[ContentController::class,'restore'])->name('content.restore');
+      Route::get('/content/destroy/{slug}',[ContentController::class,'destroy'])->name('content.destroy');
 
 //ReviewController
     Route::get('/review',[ReviewController::class,'index'])->name('review.index');

@@ -4,47 +4,45 @@
 	<div class="col-12">
 		<div class="card border border-secondary">
 			<div class="card-header bg-transparent border-secondary d-flex justify-content-between ">
-				<h5 class="card-title">All pages</h5>
-                 <a href="{{ route('page.create') }}" class="btn btn-secondary">
-                    <i class="fa fa-plus-circle me-2" aria-hidden="true"></i>create page
+				<h5 class="card-title">All content</h5>
+                 <a href="{{ route('content.create') }}" class="btn btn-secondary">
+                    <i class="fa fa-plus-circle me-2" aria-hidden="true"></i>Create content
                  </a>
              </div>
 			<div class="card-body">
 				<table class="table table-bordered dt-responsive nowrap w-100">
-					<thead>
+					<thead class="text-center">
+
 						<tr>
-							<th> page name </th>
-							<th> page url</th>
-							<th> page order </th>
-							<th> page status </th>
-                            <th>  Action </th>
+							<th> Image</th>
+                            <th> Title</th>
+							<th> Page Name </th>
+							<th>Actions</th>
 						</tr>
 					</thead>
-					<tbody>
-                           @foreach ($pages as $data )
+					<tbody class="text-center">
+                        @foreach ($contents as $data )
 
-                            <tr>
-							<td>{{ $data->page_name }}</td>
-							<td>{{ $data->page_url }}</td>
-							<td>{{ $data->page_order }}</td>
-
-                            <td>
-                                @if($data->page_status == 1)
-                                <div class="badge badge-soft-success font-size-12">Active</div>
+						   <td>
+                                @if($data->content_image)
+                                    <img src="{{ asset('uploads/content/' . $data->content_image) }}" alt="post_image" width="50px">
                                 @else
-                                <div class="badge badge-soft-danger font-size-12">Disable</div>
+                                <img src="{{ asset('uploads/avatar.png') }}" alt="no_image" width="50px">
                                 @endif
                             </td>
+							<td>{{ $data->content_title }}</td>
+							<td>{{ $data->pagename->page_name }}</td>
+
 
 							<td class="table-action">
-                                 <a href="{{ route('page.edit', $data->page_slug) }}"><i class="align-middle" data-feather="edit-2"></i></a>
-                                 <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $data->page_slug }}">
+                                 <a href="{{ route('content.edit', $data->content_slug) }}"><i class="align-middle" data-feather="edit-2"></i></a>
+                                 <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $data->content_slug }}">
                                         <i class="align-middle" data-feather="trash"></i>
                                  </a>
                             </td>
 						</tr>
                               {{--   Modal start  --}}
-                                  <div class="modal fade" id="defaultModalPrimary{{ $data->page_slug }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                  <div class="modal fade" id="defaultModalPrimary{{ $data->content_slug }}" tabindex="-1" role="dialog" aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -55,13 +53,13 @@
 													<p class="mb-0"> Are you want to delete this item??</p>
 												</div>
 												<div class="modal-footer">
-													<a href="{{ route('page.softdelete',$data->page_slug) }}" type="button" class="btn btn-danger">Yes</a>
+													<a href="{{ route('content.softdelete',$data->content_slug) }}" type="button" class="btn btn-danger">Yes</a>
                                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
 												</div>
 											</div>
 										</div>
-									</div>
-                           @endforeach
+                                  </div>
+                             @endforeach
 					</tbody>
 				</table>
 			</div>
