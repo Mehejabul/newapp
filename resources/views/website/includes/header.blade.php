@@ -72,12 +72,12 @@
                                         <li>
                                             <a href="#!">Pages</a>
                                             <ul>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="team.html">Team</a></li>
-                                                <li><a href="testimonials.html">Testimonials</a></li>
-                                                <li><a href="pricing.html">Pricing</a></li>
-                                                <li><a href="faq.html">FAQ</a></li>
-                                                <li><a href="clients.html">Clients</a></li>
+                                                <li><a href="{{ route('blog.about') }}">About Us</a></li>
+                                                <li><a href="{{ route('blog.team') }}">Team</a></li>
+                                                <li><a href="{{ route('blog.testimonial') }}">Testimonials</a></li>
+                                                <li><a href="{{ route('blog.pricing') }}">Pricing</a></li>
+                                                <li><a href="{{ route('blog.faq') }}">FAQ</a></li>
+                                                <li><a href="{{ route('blog.clients') }}">Clients</a></li>
                                                 <li><a href="404.html">Page 404</a></li>
                                                 <li><a href="coming-soon.html">Coming Soon</a></li>
                                             </ul>

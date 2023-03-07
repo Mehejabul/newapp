@@ -67,6 +67,32 @@ class WebsiteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     public function about(){
+          return view('website.pages.about');
+     }
+
+     public function team(){
+        return view('website.pages.team');
+     }
+
+     public function testimonial(){
+        return view('website.pages.testimonial');
+     }
+
+     public function clients(){
+        return view('website.pages.clients');
+     }
+
+     public function faq(){
+        return view('website.pages.faq');
+     }
+
+     public function pricing(){
+        return view('website.pages.pricing');
+     }
+
+
     public function store(Request $request)
     {
         //

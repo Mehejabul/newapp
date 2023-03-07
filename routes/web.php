@@ -43,6 +43,12 @@ Route::get('/',[WebsiteController::class,'index'])->name('website.index');
 Route::get('/blog/grid',[WebsiteController::class,'blog_grid'])->name('blog.grid');
 Route::get('/blog/list',[WebsiteController::class,'blog_list'])->name('blog.list');
 Route::get('/blog/detail',[WebsiteController::class,'blog_detail'])->name('blog.detail');
+Route::get('/about',[WebsiteController::class,'about'])->name('blog.about');
+Route::get('/team',[WebsiteController::class,'team'])->name('blog.team');
+Route::get('/testimonial',[WebsiteController::class,'testimonial'])->name('blog.testimonial');
+Route::get('/clients',[WebsiteController::class,'clients'])->name('blog.clients');
+Route::get('/faq',[WebsiteController::class,'faq'])->name('blog.faq');
+Route::get('/pricing',[WebsiteController::class,'pricing'])->name('blog.pricing');
 
 
 

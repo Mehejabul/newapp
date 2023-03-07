@@ -29,7 +29,7 @@
                         <div class="ps-lg-2-5">
                             <h3 class="footer-title">Quick Links</h3>
                             <ul class="footer-list ps-0 mb-0">
-                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="{{ route('blog.about') }}">About Us</a></li>
                                 <li><a href="case-studies-fullwidth.html">Case Study</a></li>
                                 <li><a href="blog-grid.html">Our Blog</a></li>
                                 <li><a href="services.html">Our Services</a></li>
