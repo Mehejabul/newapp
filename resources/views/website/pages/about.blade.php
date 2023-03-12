@@ -28,19 +28,31 @@
             </div>
         </section>
 
+        @php
+        $contents = App\Models\content::where('content_status',1)->where('content_id', "1")->get();
+        @endphp
+
         <!-- ZIG-ZAG
         ================================================== -->
         <section>
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-1-9 mb-md-2-5 mb-lg-0 wow fadeInLeft" data-wow-delay=".1s">
+                @foreach ($contents as $content)
+
                         <div class="pe-lg-1-9 text-center text-lg-left">
-                            <img src="{{asset('contents/forntend')}}/img/content/seo-optimization-01.svg" alt="...">
+                            <img src="{{asset('uploads/content')}}/{{ $content->content_image }}" alt="...">
                         </div>
+                 @endforeach
                     </div>
                     <div class="col-lg-6 wow fadeInRight" data-wow-delay=".2s">
-                        <h2 class="h1 mb-1-6">Work with a hard-working SEO company</h2>
-                        <p class="alt-font font-weight-600 mb-1-6">For new companies and developing organizations, an online expert can build up a digital advertising intend to assist you with developing and hold an upbeat customer base.</p>
+                        @foreach ( $contents as $content )
+
+
+                        <h2 class="h1 mb-1-6">{!! $content->content_title !!}</h2>
+                        <p class="alt-font font-weight-600 mb-1-6">{!!  $content->content_details !!}</p>
+                       @endforeach
+
                         <div class="row">
                             <div class="col-md-6 mb-1-6">
                                 <div class="media p-4 bg-blue-opacity h-100">
@@ -80,6 +92,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -87,12 +100,20 @@
         <!-- ZIG-ZAG
         ================================================== -->
         <section class="p-0 zig-zag-block overflow-visible">
-            <div class="img-1"><img src="{{asset('contents/forntend')}}/img/bg/bg-03.png" alt="..."></div>
+                 @foreach ($contents as $content)
+
+            <div class="img-1"><img src="{{ asset('uploads/content') }}/{{ $content->content_image }}" alt="..."></div>
+
+                 @endforeach
+
             <div class="container z-index-2 position-relative">
                 <div class="row align-items-center">
                     <div class="col-lg-6 order-2 order-lg-1 wow fadeInLeft" data-wow-delay=".1s">
-                        <h2 class="h1 mb-1-6">Viable business distribution solutions at a glance</h2>
-                        <p class="mb-1-6">Our kin characterize us and show what our identity is. At the point when we set individuals to work with the customer.</p>
+                        @foreach($contents as $content)
+                        <h2 class="h1 mb-1-6">{{ $content->content_title }}</h2>
+                        <p class="mb-1-6">{{ $content->content_subtitle }}</p>
+                        @endforeach
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="pe-lg-1-6">
@@ -161,6 +182,7 @@
                     </div>
                 </div>
             </div>
+
         </section>
 
         <!-- HISTORY
@@ -288,42 +310,18 @@
                     <h2 class="mb-0 h1">Words from our clients</h2>
                 </div>
                 <div class="testimonial-carousel owl-carousel owl-theme wow fadeInUp" data-wow-delay=".2s">
+                    @foreach ($clients_love as $client)
+
                     <div class="testimonial-wrapper pink">
                         <div class="testimonial-quote pink"></div>
                         <div class="testimonial-image">
-                            <img src="{{asset('contents/forntend')}}/img/avatar/avatar-01.jpg" alt="...">
+                            <img src="{{asset('uploads/review')}}/{{ $client->reviewer_image }}" alt="...">
                         </div>
-                        <p class="mb-3">A fulfilled client is one who will keep on purchasing from you, rarely look around, allude different clients and by and large be a whiz advocate for your business.</p>
-                        <h4 class="h5 mb-1">Christy Stapleton</h4>
-                        <p class="mb-0">Computer Programmer</p>
+                        <p class="mb-3">{{$client->reviewer_description }}</p>
+                        <h4 class="h5 mb-1">{{ $client->reviewer_name }}</h4>
                     </div>
-                    <div class="testimonial-wrapper purple">
-                        <div class="testimonial-quote purple"></div>
-                        <div class="testimonial-image">
-                            <img src="{{asset('contents/forntend')}}/img/avatar/avatar-02.jpg" alt="...">
-                        </div>
-                        <p class="mb-3">Doing an amazing job includes making clients "feel extraordinary" and assisting them with excursion when it may not make sense. Quality is recalled long after the cost is failed to remember.</p>
-                        <h4 class="h5 mb-1">Jens Ostergaard</h4>
-                        <p class="mb-0">Mainframe Programmer</p>
-                    </div>
-                    <div class="testimonial-wrapper blue">
-                        <div class="testimonial-quote blue"></div>
-                        <div class="testimonial-image">
-                            <img src="{{asset('contents/forntend')}}/img/avatar/avatar-03.jpg" alt="...">
-                        </div>
-                        <p class="mb-3">Understand what your clients need most and what your organization does best. Zero in on where those two meet. The client's discernment is your world.</p>
-                        <h4 class="h5 mb-1">Mubin Bazzi</h4>
-                        <p class="mb-0">Systems Programmer</p>
-                    </div>
-                    <div class="testimonial-wrapper yellow">
-                        <div class="testimonial-quote yellow"></div>
-                        <div class="testimonial-image">
-                            <img src="{{asset('contents/forntend')}}/img/avatar/avatar-04.jpg" alt="...">
-                        </div>
-                        <p class="mb-3">We consider our to be as welcomed visitors to a gathering, and we are the hosts. It's our work each day to make each significant part of the client experience somewhat better.</p>
-                        <h4 class="h5 mb-1">Cecilie Fleischer</h4>
-                        <p class="mb-0">Applications Programmer</p>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </section>

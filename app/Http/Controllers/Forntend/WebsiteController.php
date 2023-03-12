@@ -12,6 +12,8 @@ use App\Models\Tag;
 use App\Models\User;
 use App\Models\PostCategory;
 use App\Models\Review;
+use App\Models\Content;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -69,7 +71,8 @@ class WebsiteController extends Controller
      */
 
      public function about(){
-          return view('website.pages.about');
+       $clients_love = Review::get();
+          return view('website.pages.about', compact('clients_love'));
      }
 
      public function team(){

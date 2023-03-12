@@ -48,8 +48,8 @@
                             </div>
                             <div class="card-body">
                                 <small class="font-weight-500">{{ $post->created_at->format('d M.Y') }}</small>
-                                <h3 class="h4 mt-2 mb-3"><a href="blog-detail.html">{{ $post->post_title }}</a></h3>
-                                <p class="mb-3">{{ Str::limit($post->post_details, 100) }}</p>
+                                <h3 class="h4 mt-2 mb-3"><a href="{{ route('blog.detail',['slug' => $post->post_slug]) }}">{{ $post->post_title }}</a></h3>
+                                <p class="mb-3">{!! Str::limit($post->post_details, 100) !!}</p>
                                 <div class="blog-author">
                                     <div class="blog-author-img">
                                         <img style="height: 80px; width:80px;" src="{{asset('uploads/user/image/')}}/{{ $users->photo }}" alt="...">
@@ -63,17 +63,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <!-- start pager  -->
-                        <div class="text-center mt-6 mt-lg-7">
-                            <div class="pagination text-extra-dark-gray">
-                                <ul>
-                                    <li><a href="#!"><i class="fas fa-long-arrow-alt-left"></i> </a></li>
-                                    <li class="active"><a href="#!">1</a></li>
-                                    <li><a href="#!">2</a></li>
-                                    <li><a href="#!">3</a></li>
-                                    <li><a href="#!"><i class="fas fa-long-arrow-alt-right"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
+                              {{ $recent_post->links() }}
                         <!-- end pager -->
                     </div>
                 </div>

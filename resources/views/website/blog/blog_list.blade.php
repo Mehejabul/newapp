@@ -52,7 +52,7 @@
                                         <small class="font-weight-500">{{ $post->created_at->format("d Y M") }}</small>
                                         <h3 class="h4 mt-2 mb-3">
                                             <a href="{{ route('blog.detail',['slug' => $post->post_slug]) }}">{{ $post->post_title }}</a></h3>
-                                        <p class="mb-3">{{ Str::limit($post->post_details, 200) }}</p>
+                                        <p class="mb-3">{!! Str::limit($post->post_details, 200) !!}</p>
                                         <div class="blog-author">
                                             <div class="blog-author-img">
                                                <img style="height: 80px; width:80px;" src="{{asset('uploads/user/image/')}}/{{ $users->photo }}" alt="...">
