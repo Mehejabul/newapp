@@ -37,7 +37,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-//Website route
+//Website routeconsult.store
 
 Route::get('/',[WebsiteController::class,'index'])->name('website.index');
 Route::get('/blog/grid',[WebsiteController::class,'blog_grid'])->name('blog.grid');
@@ -49,11 +49,8 @@ Route::get('/testimonial',[WebsiteController::class,'testimonial'])->name('blog.
 Route::get('/clients',[WebsiteController::class,'clients'])->name('blog.clients');
 Route::get('/faq',[WebsiteController::class,'faq'])->name('blog.faq');
 Route::get('/pricing',[WebsiteController::class,'pricing'])->name('blog.pricing');
-
-
-
-
-
+Route::get('/pricing',[WebsiteController::class,'pricing'])->name('blog.pricing');
+Route::post('/faq-submit',[WebsiteController::class,'consult'])->name('consult.store');
 
 
 //admin route

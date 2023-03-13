@@ -14,7 +14,11 @@ use App\Models\PostCategory;
 use App\Models\Review;
 use App\Models\Content;
 use App\Models\Page;
+use App\Models\Consultant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\str;
+use Illuminate\Support\Facades\Session;
 
 class WebsiteController extends Controller
 {
@@ -96,9 +100,42 @@ class WebsiteController extends Controller
      }
 
 
-    public function store(Request $request)
+    public function consult(Request $request)
     {
-        //
+         $this->validate($request,[
+           'name' =>'required',
+           'email' => 'required',
+           'subject' => 'required',
+           'message' => 'required',
+
+        ],[
+            'name.required' => "please enter the name",
+            'email.required' => "please enter your email",
+            'subject.required' => "please enter Subject",
+            'message.requireed' => "please enter message",
+
+        ]);
+
+        $insert = Consultant::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'subject' => $request['subject'],
+            'message' => $request['message'],
+            'slug' =>uniqid(),
+            'status' => 1,
+            'created_at' =>Carbon::now(),
+        ]);
+
+        if($insert){
+            session::flash('success','successfully insert');
+            return redirect()->back();
+        }else{
+            session::flash('error','insert failed');
+            return redirect()->back();
+        }
+
+
     }
 
     /**

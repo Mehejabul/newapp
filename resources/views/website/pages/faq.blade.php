@@ -122,19 +122,19 @@
         <!-- FAQ FORM
         ================================================== -->
         <section class="bg-img bg-primary cover-background" data-background="{{asset('contents/forntend')}}/img/bg/bg-01.png">
+            @include('website.includes.alert')
             <div class="container">
                 <div class="section-heading heading-white mb-2-3 mb-lg-2-9 wow fadeInDown" data-wow-delay=".2s">
                     <h6 class="text-white"><span>get quote</span></h6>
                     <h2 class="mb-0 h1 text-white">Make an free consultant</h2>
                 </div>
                 <div class="row justify-content-center wow fadeInUp" data-wow-delay=".2s">
+
                     <div class="col-md-10 col-lg-9 faq-form">
-                        <form class="quform" action="#" method="post" enctype="multipart/form-data" onclick="">
-
+                        <form class="quform" action ="{{ route('consult.store') }}" method="post" enctype="multipart/form-data" onclick="">
+                            @csrf
                                 <div class="quform-elements">
-
                                     <div class="row">
-
                                         <!-- Begin Text input element -->
                                         <div class="col-md-6">
                                             <div class="quform-element">
@@ -142,6 +142,9 @@
                                                 <div class="quform-input">
                                                     <input class="form-control" id="name" type="text" name="name" placeholder="Your name here" />
                                                 </div>
+                                                 @error('name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                     @enderror
                                             </div>
 
                                         </div>
@@ -154,6 +157,9 @@
                                                 <div class="quform-input">
                                                     <input class="form-control" id="email" type="text" name="email" placeholder="Your email here" />
                                                 </div>
+                                                 @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                     @enderror
                                             </div>
                                         </div>
                                         <!-- End Text input element -->
@@ -165,6 +171,9 @@
                                                 <div class="quform-input">
                                                     <input class="form-control" id="subject" type="text" name="subject" placeholder="Your subject here" />
                                                 </div>
+                                                 @error('subject')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                     @enderror
                                             </div>
 
                                         </div>
@@ -177,6 +186,7 @@
                                                 <div class="quform-input">
                                                     <input class="form-control" id="phone" type="text" name="phone" placeholder="Your phone here" />
                                                 </div>
+
                                             </div>
 
                                         </div>
@@ -189,11 +199,15 @@
                                                 <div class="quform-input">
                                                     <textarea class="form-control" id="message" name="message" rows="3" placeholder="Tell us a few words"></textarea>
                                                 </div>
+
+                                                 @error('message')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                     @enderror
                                             </div>
                                         </div>
                                         <!-- End Textarea element -->
 
-                                        <!-- Begin Captcha element -->
+                                        {{--  <!-- Begin Captcha element -->
                                         <div class="col-md-12">
                                             <div class="quform-element">
                                                 <div class="form-group">
@@ -210,7 +224,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Captcha element -->
+                                        <!-- End Captcha element -->  --}}
 
                                         <!-- Begin Submit button -->
                                         <div class="col-md-12">
