@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Forntend\WebsiteController;
 
 
@@ -51,6 +52,8 @@ Route::get('/faq',[WebsiteController::class,'faq'])->name('blog.faq');
 Route::get('/pricing',[WebsiteController::class,'pricing'])->name('blog.pricing');
 Route::get('/pricing',[WebsiteController::class,'pricing'])->name('blog.pricing');
 Route::post('/faq-submit',[WebsiteController::class,'consult'])->name('consult.store');
+Route::post('/newsleter-submit',[WebsiteController::class,'newsleter'])->name('newsleter.store');
+
 
 
 //admin route
@@ -156,6 +159,11 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
       Route::get('/content/softdelete/{slug}',[ContentController::class,'softdelete'])->name('content.softdelete');
       Route::get('/content/restore/{slug}',[ContentController::class,'restore'])->name('content.restore');
       Route::get('/content/destroy/{slug}',[ContentController::class,'destroy'])->name('content.destroy');
+
+      //Subscriber
+      Route::get('/subscriber',[SubscriberController::class,'index'])->name('subscriber.index');
+      Route::get('/subscriber/destroy/{id}',[SubscriberController::class,'destroy'])->name('subscriber.destroy');
+
 
 //ReviewController
     Route::get('/review',[ReviewController::class,'index'])->name('review.index');

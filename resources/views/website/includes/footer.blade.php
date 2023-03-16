@@ -53,22 +53,21 @@
                         <div>
                             <h3 class="footer-title">Our Newsletter</h3>
                             <p class="alt-font text-white">{{ $datas->basic_newstext }}</p>
-                            <form class="quform newsletter-footer" action="https://seo.websitelayout.net/quform/newsletter-two.php" method="post" enctype="multipart/form-data" onclick="">
-
+                            <form class="quform newsletter-footer" action="{{ route('newsleter.store') }}" method="post" enctype="multipart/form-data" onclick="">
+                                @csrf
                                 <div class="quform-elements">
-
                                     <div class="row">
-
                                         <!-- Begin Text input element -->
                                         <div class="col-md-12">
                                             <div class="quform-element">
                                                 <div class="quform-input">
-                                                    <input class="form-control" id="email_address" type="text" name="email_address" placeholder="Subscribe with us">
+                                                    <input class="form-control" id="email_address" type="text" name="email" placeholder="Subscribe with us">
                                                 </div>
+                                                 @error('email')
+                                                      <span class="text-danger">{{ $message }}</span>
+                                                 @enderror
                                             </div>
                                         </div>
-                                        <!-- End Text input element -->
-
                                         <!-- Begin Submit button -->
                                         <div class="col-md-12">
                                             <div class="quform-submit-inner">
@@ -77,11 +76,8 @@
                                             <div class="quform-loading-wrap text-start"><span class="quform-loading"></span></div>
                                         </div>
                                         <!-- End Submit button -->
-
                                     </div>
-
                                 </div>
-
                             </form>
                         </div>
                     </div>
@@ -108,6 +104,26 @@
 
 
  <!-- all js include start -->
+     {{--  sweetAlert  --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    @if(Session::has('success'))
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: "{{ session('success') }}",
+        showConfirmButton: false,
+        timer: 1500
+    })
+    @elseif(Session::has('error'))
+    Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Something went wrong!',
+})
+@endif
+</script>
+
 
     <!-- jquery -->
     <script src="{{asset('contents/forntend')}}/js/core.min.js"></script>
@@ -125,3 +141,6 @@
     <script src="{{asset('contents/forntend')}}/quform/js/scripts.js"></script>
 
     <!-- all js include end -->
+
+
+

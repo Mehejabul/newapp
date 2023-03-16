@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Forntend;
 
 use App\Http\Controllers\Controller;
- use App\Models\BasicSetting;
+use App\Models\BasicSetting;
 use App\Models\SocialInfo;
 use App\Models\ContactInfo;
 use App\Models\Banner;
@@ -14,10 +14,13 @@ use App\Models\PostCategory;
 use App\Models\Review;
 use App\Models\Content;
 use App\Models\Page;
+use App\Models\Newslwtwer;
 use App\Models\Consultant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\str;
+use App\Mail\MyTestMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class WebsiteController extends Controller
@@ -128,14 +131,38 @@ class WebsiteController extends Controller
         ]);
 
         if($insert){
-            session::flash('success','successfully insert');
+            session::flash('success','Thank you! Please wait we will replay you soon');
             return redirect()->back();
         }else{
-            session::flash('error','insert failed');
+            session::flash('error','Opps! Pease try agin');
             return redirect()->back();
         }
+    }
 
 
+    public function newsleter(Request $request){
+        //  dd($request->all());
+        $this->validate($request,[
+           'email' => 'required',
+        ],[
+            'email.required' => 'Please enter your email',
+        ]);
+
+        $newsleter = Newslwtwer::create([
+             'email' => $request['email'],
+             'created_at' => Carbon::now(),
+        ]);
+
+        $emails = $request['email'];
+
+        Mail::to($emails)->send(new MyTestMail($emails));
+
+        if($newsleter){
+            session::flash('success', 'Thank you to subscribe us');
+            return redirect()->back();
+            session::flash('error', 'Opps! Please try later');
+            return redirect->back();
+        }
     }
 
     /**
