@@ -43,7 +43,7 @@
                             <div class="col-lg-12 mb-1-6 mb-md-1-9">
                                 <article class="card card-style2 border-none">
                                     <div class="card-img">
-                                        <img style="width:100%;height:460px;" src="{{asset('uploads/post')}}/{{ $post->post_feature_image }}" alt="..." img-fluid>
+                                        <img style="width:100%;height:460px;" src="{{ asset($post->post_feature_image) }}" alt="..." img-fluid>
                                     </div>
                                     <div class="blog-info-tag">
                                         <div class="text-end"><a href="#!" class="bg-light-pink">{{ $post->postcategory->postcate_name }}</a></div>
@@ -51,12 +51,13 @@
                                     <div class="card-body">
                                         <small class="font-weight-500">{{ $post->created_at->format("d Y M") }}</small>
                                         <h3 class="h4 mt-2 mb-3">
-                                            <a href="{{ route('blog.detail',['slug' => $post->post_slug]) }}">{{ $post->post_title }}</a></h3>
+                                            <a href="{{ route('blog.detail', $post->post_url) }}">{{ $post->post_title }}</a>
+                                        </h3>
                                         <p class="mb-3">{!! Str::limit($post->post_details, 200) !!}</p>
                                         <div class="blog-author">
                                             <div class="blog-author-img">
                                                <img style="height: 80px; width:80px;" src="{{asset('uploads/user/image/')}}/{{ $users->photo }}" alt="...">
-                                            </div> <span class="text-light-pink">{{ $post->creator->name }}</span>
+                                            </div> <span class="text-light-pink">{{ optional($post->creator)->name }}</span>
                                         </div>
                                     </div>
                                 </article>

@@ -134,7 +134,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ ('/') }}"> <i class="align-middle" data-feather="globe"></i> <span
+                <a target="_blank" class="sidebar-link text-danger" href="{{ ('/') }}"> <i class="align-middle" data-feather="globe"></i> <span
                         class="align-middle">website</span> </a>
             </li>
 

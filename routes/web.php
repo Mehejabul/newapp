@@ -30,10 +30,6 @@ use App\Http\Controllers\Admin;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -44,7 +40,7 @@ Route::get('/dashboard', function () {
 Route::get('/',[WebsiteController::class,'index'])->name('website.index');
 Route::get('/blog/grid',[WebsiteController::class,'blog_grid'])->name('blog.grid');
 Route::get('/blog/list',[WebsiteController::class,'blog_list'])->name('blog.list');
-Route::get('/blog/detail',[WebsiteController::class,'blog_detail'])->name('blog.detail');
+Route::get('/blog/detail/{url}',[WebsiteController::class,'blog_detail'])->name('blog.detail');
 Route::get('/about',[WebsiteController::class,'about'])->name('blog.about');
 Route::get('/team',[WebsiteController::class,'team'])->name('blog.team');
 Route::get('/testimonial',[WebsiteController::class,'testimonial'])->name('blog.testimonial');
@@ -56,6 +52,10 @@ Route::post('/faq-submit',[WebsiteController::class,'consult'])->name('consult.s
 Route::get('/contact',[WebsiteController::class,'contact'])->name('contact.page');
 Route::post('/contact/submit',[WebsiteController::class,'contact_submit'])->name('contact_page.store');
 Route::post('/newsleter-submit',[WebsiteController::class,'newsleter'])->name('newsleter.store');
+
+// Tag Wise Product
+Route::get('/tag-post/{slug}',[WebsiteController::class,'tagWisePost'])->name('show.tag.post.all');
+
 
 
 

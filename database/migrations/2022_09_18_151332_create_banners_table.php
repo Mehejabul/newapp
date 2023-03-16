@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('banner_Sub_title',)->nullable();
             $table->string('banner_button',30)->nullable();
             $table->string('banner_url',190)->nullable();
-            $table->string('banner_image',50)->nullable();
+            $table->string('banner_image')->nullable();
             $table->integer('banner_order')->nullable();
             $table->integer('banner_publish')->default(0);
             $table->integer('banner_creator')->nullable();

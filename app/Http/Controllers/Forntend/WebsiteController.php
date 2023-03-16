@@ -33,9 +33,9 @@ class WebsiteController extends Controller
      */
     public function index()
     {
-         $datas =  BasicSetting::where('basic_status',1)->where('basic_id',1)->firstorFail();
-         $socils = SocialInfo::where('sm_status',1)->where('sm_id',1)->firstorFail();
-         $baner =  Banner::where('banner_status',1)->firstOrFail();
+        $datas =  BasicSetting::first();
+        $socils = SocialInfo::first();
+        $baner =  Banner::where('banner_status',1)->firstOrFail();
 
         return view('website.home',compact('datas','socils','baner'));
     }
@@ -60,8 +60,8 @@ class WebsiteController extends Controller
         return view('website.blog.blog_list', compact('posts','users','categories','popular_post','tags'));
     }
 
-    public function blog_detail(){
-        $posts = Post::with('Postcategory','creator',)->orderBy("post_id","Asc")->limit(1)->get();
+    public function blog_detail($url){
+        $posts = Post::where('post_url', $url)->first();
         $releted_post = Post:: with('Postcategory','creator')->inRandomOrder()->limit(2)->get();
         $popular_post = Post:: with('Postcategory','creator')->inRandomOrder()->limit(3)->get();
         $tags = Tag::all();
@@ -210,15 +210,10 @@ class WebsiteController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function tagWisePost($slug)
     {
-        //
+        $tag = Tag::where('tag_slug', $slug)->with('posts')->first();
+       dd($tag);
     }
 
     /**

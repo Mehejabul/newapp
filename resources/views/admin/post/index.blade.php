@@ -26,7 +26,7 @@
 
 						   <td>
                                 @if($data->post_feature_image)
-                                    <img src="{{ asset('uploads/post/' . $data->post_feature_image) }}" alt="post_image" width="50px">
+                                    <img src="{{ asset($data->post_feature_image) }}" alt="post_image" width="50px">
                                 @else
                                 <img src="{{ asset('uploads/avatar.png') }}" alt="no_image" width="50px">
                                 @endif
@@ -49,7 +49,7 @@
 
 
 							<td class="table-action">
-                                 <a href="{{ route('post.editing',$data->reviwer_slug) }}"><i class="align-middle" data-feather="edit-2"></i></a>
+                                 <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
                                  <a href="{{ route('post.show',$data->post_id) }}"><i class="align-middle" data-feather="eye"></i></a>
                                  <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $data->post_id }}">
                                         <i class="align-middle" data-feather="trash"></i>
