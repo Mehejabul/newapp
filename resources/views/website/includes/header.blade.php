@@ -111,7 +111,7 @@
 
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contacts</a></li>
+                                        <li><a href="{{ route('contact.page') }}">Contacts</a></li>
                                     </ul>
                                     <!-- end menu area -->
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\SubscriberController;
+use App\Http\Controllers\Admin\Contactcontroller;
 use App\Http\Controllers\Forntend\WebsiteController;
 
 
@@ -52,6 +53,8 @@ Route::get('/faq',[WebsiteController::class,'faq'])->name('blog.faq');
 Route::get('/pricing',[WebsiteController::class,'pricing'])->name('blog.pricing');
 Route::get('/pricing',[WebsiteController::class,'pricing'])->name('blog.pricing');
 Route::post('/faq-submit',[WebsiteController::class,'consult'])->name('consult.store');
+Route::get('/contact',[WebsiteController::class,'contact'])->name('contact.page');
+Route::post('/contact/submit',[WebsiteController::class,'contact_submit'])->name('contact_page.store');
 Route::post('/newsleter-submit',[WebsiteController::class,'newsleter'])->name('newsleter.store');
 
 
@@ -163,6 +166,11 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
       //Subscriber
       Route::get('/subscriber',[SubscriberController::class,'index'])->name('subscriber.index');
       Route::get('/subscriber/destroy/{id}',[SubscriberController::class,'destroy'])->name('subscriber.destroy');
+
+      //contact Controller
+
+      Route::get('/contact-info',[ContactController::class,'cont_info'])->name('continfo');
+      Route::get('/contact-info/destroy/{slug}',[ContactController::class,'destroy'])->name('continfo.destroy');
 
 
 //ReviewController

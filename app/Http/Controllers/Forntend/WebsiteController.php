@@ -16,6 +16,7 @@ use App\Models\Content;
 use App\Models\Page;
 use App\Models\Newslwtwer;
 use App\Models\Consultant;
+use App\Models\WebContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\str;
@@ -163,6 +164,50 @@ class WebsiteController extends Controller
             session::flash('error', 'Opps! Please try later');
             return redirect->back();
         }
+
+    }
+
+     public function contact(){
+            return view('website.pages.contact');
+        }
+
+    public function contact_submit(Request $request){
+        $this->validate($request,[
+           'name' => 'required',
+           'email' => 'required',
+           'subject' => 'required',
+           'message' => 'required',
+        ],[
+
+            'name.required' => 'Please insert your name!',
+            'email.required' => 'Please inset your email!',
+            'subject.required' => 'Please inset your subject!',
+            'message.required' => 'Please write your messae!',
+
+        ]);
+
+        $submit = WebContact::create([
+           'name' => $request['name'],
+           'email' => $request['email'],
+           'phone' => $request['phone'],
+           'subject' => $request['subject'],
+           'message' => $request['message'],
+           'slug' => uniqid(),
+           'status' => 1,
+           'created_at' => Carbon::now(),
+        ]);
+
+        if($submit){
+            Session::flash('success','Please wait we will replay you soon');
+            return redirect()->back();
+        }else{
+            Session::flash('error','Opps! Theres something Wrong');
+            return redirect()->back();
+        }
+
+
+
+
     }
 
     /**

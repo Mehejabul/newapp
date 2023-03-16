@@ -129,6 +129,11 @@
             </li>
 
             <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('continfo') }}"> <i class="align-middle"
+                        data-feather="info"></i> <span class="align-middle">Contact Information</span> </a>
+            </li>
+
+            <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ ('/') }}"> <i class="align-middle" data-feather="globe"></i> <span
                         class="align-middle">website</span> </a>
             </li>
