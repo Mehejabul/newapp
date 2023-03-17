@@ -196,7 +196,7 @@
                                 <article class="card card-style2 border-none h-100">
                                     <div class="card-img">
                                         <img style="width:100%; height:220px;"
-                                            src="{{asset('uploads/post')}}/{{ $r_post->post_feature_image }}" alt="...">
+                                            src="{{ asset($r_post->post_feature_image) }}" alt="...">
                                     </div>
                                     <div class="blog-info-tag">
                                         <div class="text-end"><a href="#!"
@@ -260,8 +260,9 @@
                             <div class="media-body ms-4">
                                 <h4 class="h6 mb-2"><a href="#!">John Martin</a></h4>
                                 <p class="mb-3">It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout.</p>
-                                <div>
+                                    readable content of a page when looking at its layout.
+                                </p>
+                             <div>
                                     <a href="#!" class="text-dark display-30 display-md-29">
                                         <i class="fa fa-reply display-31 pr-2" aria-hidden="true"></i> Reply
                                     </a>
@@ -280,14 +281,12 @@
                                     </div>
                                     <div class="col-sm">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" name="email"
-                                                placeholder="Email Address">
+                                            <input type="email" class="form-control" name="email" placeholder="Email Address">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="reply" rows="6" class="form-control"
-                                        placeholder="Your Reply"></textarea>
+                                    <textarea name="reply" rows="6" class="form-control" placeholder="Your Reply"></textarea>
                                 </div>
                                 <div>
                                     <button class="butn" type="submit"><span>Leave Reply</span></button>
@@ -327,19 +326,16 @@
                                     <p>{!! $review->reviewer_description !!}</p>
                                     <ul class="social-icons ps-0">
                                         <li>
-                                            <a href="{{ $review->reviwer_facebook }}"><i
-                                                    class="fab fa-facebook-f"></i></a>
+                                            <a href="{{ $review->reviwer_facebook }}"><i class="fab fa-facebook-f"></i></a>
                                         </li>
                                         <li>
                                             <a href="{{ $review->reviwer_twitter }}"><i class="fab fa-twitter"></i></a>
                                         </li>
                                         <li>
-                                            <a href="{{ $review->reviwer_instagram }}"><i
-                                                    class="fab fa-instagram"></i></a>
+                                            <a href="{{ $review->reviwer_instagram }}"><i class="fab fa-instagram"></i></a>
                                         </li>
                                         <li>
-                                            <a href="{{ $review->reviwer_instagramphp  }}"><i
-                                                    class="fab fa-youtube"></i></a>
+                                            <a href="{{ $review->reviwer_instagramphp  }}"><i class="fab fa-youtube"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -350,11 +346,8 @@
                             <h6 class="widget-title">Categories</h6>
                             <ul class="cat-list">
                                 @foreach ($categories as $category )
-
-
                                 <li>
-                                    <a href="#!"><i
-                                            class="fas fa-angle-right"></i>{{ $category->postcate_name }}<span>4</span></a>
+                                    <a href="#!"><iclass="fas fa-angle-right"></iclass=>{{ $category->postcate_name }}<span>4</span></a>
                                 </li>
                                 @endforeach
                             </ul>
@@ -364,11 +357,12 @@
                             @foreach ($popular_post as $p_post )
                             <div class="media mb-3 border-bottom pb-3 border-color-extra-light-gray">
                                 <img style="height:80px;width:80px;" class="me-3 border-radius-4"
-                                    src="{{asset('uploads/post')}}/{{ $p_post->post_feature_image }}" alt="...">
+                                    src="{{asset( $p_post->post_feature_image )}}" alt="...">
                                 <div class="media-body align-self-center">
-                                    <h4 class="h6 mb-1"><a href="#!">{{ $p_post->post_title }}</a></h4>
-                                    <a href="#!" class="small"><i
-                                            class="far fa-calendar-check me-2"></i>{{ $p_post->created_at->format('d Y M') }}</a>
+                                    <h4 class="h6 mb-1">
+                                        <a href="{{ route('blog.detail',$p_post->post_url) }}">{{ $p_post->post_title }}</a>
+                                    </h4>
+                                    <a href="#!" class="small"><i class="far fa-calendar-check me-2"></i>{{ $p_post->created_at->format('d Y M') }}</a>
                                 </div>
                             </div>
                             @endforeach
@@ -412,12 +406,7 @@
 </section>
 @include('website.includes.footer')
 
-
-
 </div>
-
-
 </body>
-
 
 </html>

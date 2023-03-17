@@ -61,7 +61,7 @@ class PostController extends Controller
         if($request->hasFile('post_feature_image')){
         $image = $request->file('post_feature_image');
         $post_image = "post" . time() . rand(100000,1000000) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(250,250)->save('uploads/post/' .$post_image);
+        Image::make($image)->save('uploads/post/' .$post_image);
         }else{
             $post_image = '';
         }
@@ -144,7 +144,7 @@ class PostController extends Controller
      }
      $image = $request->file('post_feature_image');
      $post_image = "post" . time() . rand(10000,1000000) . '.' . $image->getClientOriginalExtension();
-     Image::make($image)->resize(250,250)->save('uploads/post/' .$post_image);
+     Image::make($image)->save('uploads/post/' .$post_image);
 
        }else{
             $post_image = $feature_image->post_feature_image;
