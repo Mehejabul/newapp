@@ -44,20 +44,20 @@
 
                             </td>  --}}
 						<td>
-                                {{$data->tags}}
+                                {{--  {{$data->tags}}  --}}
 							</td>
 
 
 							<td class="table-action">
                                  <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
-                                 <a href="{{ route('post.show',$data->post_id) }}"><i class="align-middle" data-feather="eye"></i></a>
-                                 <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $data->post_id }}">
+                                 <a href="{{ route('post.show',$data->id) }}"><i class="align-middle" data-feather="eye"></i></a>
+                                 <a  href="#" type="button"  data-bs-toggle="modal" data-bs-target="#defaultModalPrimary{{ $data->id }}">
                                         <i class="align-middle" data-feather="trash"></i>
                                  </a>
                             </td>
 						</tr>
                               {{--   Modal start  --}}
-                                  <div class="modal fade" id="defaultModalPrimary{{ $data->post_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                  <div class="modal fade" id="defaultModalPrimary{{ $data->id }}" tabindex="-1" role="dialog" aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -68,7 +68,7 @@
 													<p class="mb-0"> Are you want to delete this item??</p>
 												</div>
 												<div class="modal-footer">
-													<a href="{{ route('post.softdelete',$data->post_id) }}" type="button" class="btn btn-danger">Yes</a>
+													<a href="{{ route('post.softdelete',$data->id) }}" type="button" class="btn btn-danger">Yes</a>
                                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
 												</div>
 											</div>

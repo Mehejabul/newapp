@@ -14,9 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->bigIncrements('post_id');
+            $table->id();
             $table->integer('postcate_id');
-            $table->integer('tag_id');
             $table->string('post_title',100);
             $table->string('post_subtitle',100)->nullable();
             $table->longtext('post_details')->nullable();
@@ -28,8 +27,14 @@ return new class extends Migration
             $table->string('post_slug',200)->unique();
             $table->integer('post_status')->default(1);
             $table->timestamps();
+        });
 
-
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('post_id')->constrained('posts');
+            $table->foreignId('tag_id')->constrained('tags');
+            $table->unique(['post_id', 'tag_id']);
+            $table->timestamps();
         });
     }
 
@@ -41,5 +46,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('posts');
+        Schema::dropIfExists('post_tag');
     }
 };

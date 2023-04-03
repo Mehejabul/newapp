@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory;
-    protected $guarded = ['created_at','updated_at'];
+
+    protected $guarded = [];
 
     public function posts()
     {
-        return $this->hasMany(Post::class, 'tag_id', 'tag_id');
+        return $this->hasMany(Post::class);
     }
 }

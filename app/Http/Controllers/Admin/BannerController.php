@@ -42,7 +42,7 @@ class BannerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        // dd($request->all());
+        // return $request->all();
       $this->validate($request,[
         'banner_title' => 'required',
         'banner_mid_title' => 'required',
@@ -61,8 +61,11 @@ class BannerController extends Controller
 
       if($request->hasFile('banner_image')){
         $image = $request->file('banner_image');
-        $ban_image = "banner" . time() . rand(100000,1000000) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(250,250)->save('uploads/banner/' .$ban_image);
+        $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->save('uploads/banner/' .$imageName);
+        $ban_image = 'uploads/banner/' . $imageName;
+      }else {
+        $ban_image = '';
       }
 
         $insert = Banner::insert([
@@ -138,7 +141,7 @@ class BannerController extends Controller
 
      $image = $request->file('banner_image');
      $ban_image = "banner" . time() . rand(100000,1000000) . '.' . $image->getClientOriginalExtension();
-     Image::make($image)->resize(250,250)->save('uploads/banner/' .$ban_image);
+     Image::make($image)->save('uploads/banner/' .$ban_image);
 
        }else{
 

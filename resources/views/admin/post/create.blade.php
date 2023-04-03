@@ -91,19 +91,25 @@
                            alt="banner_image" class="img-fluid rounded" width="100" />
                         </div>
 
-                        <div class="col-lg-12  my-2">
-							 <div class="form-group">
-                                 <label>Choose Post Tags</label>
-                                     <div class=" d-flex flex-wrap">
-                                         @foreach($tags as $tag)
-                                             <div class="custom-control custom-checkbox" style="margin-right: 20px">
-                                                    <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{ $tag->tag_id}}" value="{{ $tag->tag_id }}">
-                                                    <label for="tag{{ $tag->tag_id}}" class="custom-control-label">{{ $tag->tag_name }}</label>
-                                             </div>
-                                           @endforeach
-                                       </div>
-                                 </div>
-                         </div>
+                         	<div class="col-lg-10 my-2">
+							<div class="form-group">
+								<div class="mb-3">
+									<label class="form-label"> <strong class="text-secondary"> Tags <span class="text-danger">*</span>: </strong> </label>
+									<select  class="js-example-basic-multiple form-control"  name="tags[]" multiple="multiple">
+                                        <option label="Select post category"></option>
+
+                                        @foreach ($tags as $tag)
+                                             <option value="{{ $tag->id }}"> {{ $tag->tag_name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                 @error('postcate_id')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                           </div>
+				       </div>
+
 
                          <div class="col-lg-12  my-4">
 							<div class="form-group">
@@ -139,4 +145,14 @@
         reader.readAsDataURL(this.files[0]);
     });
 </script>
+
  @endsection
+
+
+
+
+
+
+
+
+

@@ -20,7 +20,7 @@
                     <!-- right image banner -->
                     <div class="col-lg-6 text-center text-lg-end position-relative">
                         <div class="banner-img">
-                         <img style="width:600px; height:520px;" src="{{asset('uploads/banner/')}}/{{ $baner->banner_image }}" alt="...">
+                         <img  src="{{ asset($baner->banner_image) }}" alt="...">
                         </div>
                     </div>
                     <!-- end right image banner -->

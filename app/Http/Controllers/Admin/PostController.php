@@ -23,7 +23,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $datas = Post::where('post_status',1)->OrderBy('post_id', 'DESC')->get();
+        $datas = Post::with('tags')->where('post_status',1)->OrderBy('id', 'DESC')->get();
         return view('admin.post.index',compact('datas'));
     }
 
@@ -46,7 +46,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        // return $request->all();
        $this->validate($request,[
          'postcate_id' => ['required'],
          'post_title' => ['required'],
@@ -60,13 +60,14 @@ class PostController extends Controller
        //post image
         if($request->hasFile('post_feature_image')){
         $image = $request->file('post_feature_image');
-        $post_image = "post" . time() . rand(100000,1000000) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->save('uploads/post/' .$post_image);
+        $post_image_name = "post" . time() . rand(100000,1000000) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->save('uploads/post/' .$post_image_name);
+        $post_image = "uploads/post/" .$post_image_name;
         }else{
             $post_image = '';
         }
 
-        $insert = Post::create([
+        $post = Post::create([
            'postcate_id' => $request['postcate_id'],
            'post_title' => $request['post_title'],
            'post_subtitle' => $request['post_subtitle'],
@@ -78,12 +79,11 @@ class PostController extends Controller
            'post_slug' => Str::slug($request->post_title, '-'),
            'post_status' => 1,
            'created_at' => Carbon::now()
-
         ]);
 
-        $insert->tags()->attach($request->tags);
+        $post->tags()->attach($request->tags);
 
-        if($insert){
+        if($post){
             Session::flash('success','Successfully insert');
             return redirect()->back();
         }else{
@@ -102,7 +102,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $data = Post::where('post_status',1)->where('post_id',$id)->firstorFail();
+        $data = Post::where('post_status',1)->where('id',$id)->firstorFail();
        return view('admin.post.show',compact('data'));
     }
 
@@ -114,7 +114,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $tags = Tag::all();
+        $tags = Tag::first();
+       // $post->tags()->sync($request->tags);//use for edit//
         $data = Post::where('post_status',1)->where('post_id',$id)->firstorFail();
         return view('admin.post.edite',compact(['data','tags']));
     }
@@ -143,8 +144,9 @@ class PostController extends Controller
             File::delete('uploads/post/' . $feature_image->post_feature_image);
      }
      $image = $request->file('post_feature_image');
-     $post_image = "post" . time() . rand(10000,1000000) . '.' . $image->getClientOriginalExtension();
-     Image::make($image)->save('uploads/post/' .$post_image);
+     $post_image_name = "post" . time() . rand(10000,1000000) . '.' . $image->getClientOriginalExtension();
+     Image::make($image)->save('uploads/post/' .$post_image_name);
+     $post_image = "uploads/post/" .$post_image_name;
 
        }else{
             $post_image = $feature_image->post_feature_image;

@@ -28,7 +28,7 @@
                             <tr>
 							<td>
                                 @if($benner->banner_image)
-                                <img src="{{ asset('uploads/banner/'. $benner->banner_image) }}" alt="banner image" width="50px ">
+                                <img src="{{ asset($benner->banner_image) }}" alt="banner image" width="50px ">
                                  @else
                                  <img src="{{ asset('uploads/avatar.png') }}" alt="no_image" width="50px">
                                 @endif

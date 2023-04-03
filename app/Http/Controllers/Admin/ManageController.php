@@ -41,7 +41,7 @@ class ManageController extends Controller
      if($request->hasfile('basic_logo')){
         $header_logo = $request->file('basic_logo');
         $header_logo_name = 'hlogo'. '-' . time() . rand(10000,1000000) . '.' . $header_logo->getClientOriginalExtension();
-        Image::make($header_logo)->resize(140,40)->save('uploads/settings/header_logo/'.$header_logo_name);
+        Image::make($header_logo)->save('uploads/settings/header_logo/'.$header_logo_name);
      }else{
         $header_logo_name = $basic->basic_logo;
      }
@@ -50,7 +50,7 @@ class ManageController extends Controller
   if($request->hasfile('basic_flogo')){
     $footer_logo = $request->file('basic_flogo');
     $footer_logo_name = 'footer' . '_' .rand(100000, 1000000) . time() . '.' .$footer_logo->getClientOriginalExtension();
-    Image::make($footer_logo)->resize(140,40)->save('uploads/settings/footer_logo/'.$footer_logo_name);
+    Image::make($footer_logo)->save('uploads/settings/footer_logo/'.$footer_logo_name);
   }else{
     $footer_logo_name = $basic->basic_flogo;
   }
@@ -59,7 +59,7 @@ class ManageController extends Controller
     if($request->hasfile('basic_favicon')){
         $fav_icon = $request->file('basic_favicon');
         $fav_icon_name = 'favicon' . '_' . rand(10000,100000) . time() . '.' .$fav_icon->getClientOriginalExtension();
-        Image::make($fav_icon)->resize('140, 40')->save('uploads/settings/favicon/'.$fav_icon_name);
+        Image::make($fav_icon)->save('uploads/settings/favicon/'.$fav_icon_name);
     }else{
         $fav_icon_name = $basic->basic_favicon;
     }

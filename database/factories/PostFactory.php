@@ -20,7 +20,6 @@ class PostFactory extends Factory
     {
         return [
             'postcate_id' => PostCategory::all()->random()->postcate_id,
-            'tag_id' => Tag::all()->random()->tag_id,
             'post_title' => $url = fake()->sentence($nbWords = 7, $variableNbWords = true),
             'post_subtitle' => fake()->sentence($nbWords = 4, $variableNbWords = true),
             'post_details' => fake()->sentence($nbWords = 20, $variableNbWords = true),
